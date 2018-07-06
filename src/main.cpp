@@ -1911,6 +1911,13 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         // unspend nullifiers
         BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
             //commitments
+            LogPrintf("DisconnectBlock vpub_old: %lld\n", joinsplit.vpub_old);
+            LogPrintf("DisconnectBlock vpub_new: %lld\n", joinsplit.vpub_new);
+            LogPrintf("DisconnectBlock anchor: %ud\n", joinsplit.anchor.GetCheapHash());
+            LogPrintf("DisconnectBlock ephemeralKey: %ud\n", joinsplit.ephemeralKey.GetCheapHash());
+            LogPrintf("DisconnectBlock randomSeed: %ud\n", joinsplit.randomSeed.GetCheapHash());
+            
+        
             BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                 //view.SetNullifier(nf, false);
                 LogPrintf("DisconnectBlock cm: %ud\n", cm.GetCheapHash());
