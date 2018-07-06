@@ -1599,6 +1599,7 @@ void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCach
     BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
         BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
             inputs.SetNullifier(nf, true);
+            LogPrintf("UpdateCoins nf: %ud\n", nf.GetCheapHash());
         }
     }
 
@@ -1911,6 +1912,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
             BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                 view.SetNullifier(nf, false);
+                LogPrintf("DisconnectBlock nf: %ud\n", nf.GetCheapHash());
             }
         }
 

@@ -134,7 +134,7 @@ bool CCoinsViewCache::GetNullifier(const uint256 &nullifier) const {
     CNullifiersMap::iterator it = cacheNullifiers.find(nullifier);
     if (it != cacheNullifiers.end())
         return it->second.entered;
-
+        
     CNullifiersCacheEntry entry;
     bool tmp = base->GetNullifier(nullifier);
     entry.entered = tmp;
