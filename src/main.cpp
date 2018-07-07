@@ -3715,12 +3715,12 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     //TEST
 for (int j = 5; j <= 10; j++)
     {   
-        LogPrintf("INSIDE BLOCK: %d\n", j);
+        //LogPrintf("INSIDE BLOCK: %d\n", j);
         CBlockIndex* pindex = chainActive[j];
         CBlock block;
         if (!ReadBlockFromDisk(block, pindex))
             return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
-        
+        LogPrintf("INSIDE BLOCK: %d\n", pindex->nHeight);
         for (int i = block.vtx.size() - 1; i >= 0; i--) {
             LogPrintf("INSIDE TRANSACTION: %d\n", i);
             const CTransaction &tx = block.vtx[i];
