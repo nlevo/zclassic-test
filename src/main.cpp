@@ -3711,6 +3711,42 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     }
 
     LogPrintf("No coin database inconsistencies in last %i blocks (%i transactions)\n", chainActive.Height() - pindexState->nHeight, nGoodTransactions);
+    
+    //TEST
+for (int j = 5; j <= 10; j++)
+    {   
+        LogPrintf("INSIDE BLOCK: %d\n", j);
+        CBlockIndex* pindex = chainActive[j];
+        CBlock block;
+        if (!ReadBlockFromDisk(block, pindex))
+            return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
+        
+        for (int i = block.vtx.size() - 1; i >= 0; i--) {
+            LogPrintf("INSIDE TRANSACTION: %d\n", i);
+            const CTransaction &tx = block.vtx[i];
+
+            // unspend nullifiers
+            BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
+                //commitments
+                LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
+                LogPrintf("vpub_new: %lld\n", joinsplit.vpub_new);
+                LogPrintf("anchor: %s\n", joinsplit.anchor.GetHex());
+                LogPrintf("ephemeralKey: %s\n", joinsplit.ephemeralKey.GetHex());
+                LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
+            
+                BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
+                    LogPrintf("cm: %s\n", cm.GetHex());
+                }
+                //nullifiers
+                BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
+                    LogPrintf("nf: %s\n", nf.GetHex());
+                }
+            }
+            LogPrintf("\n");
+        }
+        LogPrintf("\n");
+    }
+    //TEST END
 
     return true;
 }
