@@ -1913,10 +1913,10 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
             //commitments
             LogPrintf("DisconnectBlock vpub_old: %lld\n", joinsplit.vpub_old);
             LogPrintf("DisconnectBlock vpub_new: %lld\n", joinsplit.vpub_new);
-            LogPrintf("DisconnectBlock anchor: %ud\n", joinsplit.anchor.GetCheapHash());
-            LogPrintf("DisconnectBlock ephemeralKey: %ud\n", joinsplit.ephemeralKey.GetCheapHash());
-            LogPrintf("DisconnectBlock randomSeed: %ud\n", joinsplit.randomSeed.GetCheapHash());
-            
+            LogPrintf("DisconnectBlock anchor: %ud\n", joinsplit.anchor.GetCheapHash().GetHex());
+            LogPrintf("DisconnectBlock ephemeralKey: %ud\n", joinsplit.ephemeralKey.GetCheapHash().GetHex());
+            LogPrintf("DisconnectBlock randomSeed: %ud\n", joinsplit.randomSeed.GetCheapHash().GetHex());
+
         
             BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                 //view.SetNullifier(nf, false);
@@ -1941,7 +1941,9 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
                     fClean = false;
             }
         }
+        LogPrintf("Transaction: %i\n", i);
     }
+     
 
     // set the old best anchor back
     view.PopAnchor(blockUndo.old_tree_root);
