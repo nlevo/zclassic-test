@@ -1913,9 +1913,9 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
             //commitments
             LogPrintf("DisconnectBlock vpub_old: %lld\n", joinsplit.vpub_old);
             LogPrintf("DisconnectBlock vpub_new: %lld\n", joinsplit.vpub_new);
-            LogPrintf("DisconnectBlock anchor: %ud\n", joinsplit.anchor.GetCheapHash().GetHex());
-            LogPrintf("DisconnectBlock ephemeralKey: %ud\n", joinsplit.ephemeralKey.GetCheapHash().GetHex());
-            LogPrintf("DisconnectBlock randomSeed: %ud\n", joinsplit.randomSeed.GetCheapHash().GetHex());
+            LogPrintf("DisconnectBlock anchor: %s\n", (joinsplit.anchor.GetCheapHash()).GetHex());
+            LogPrintf("DisconnectBlock ephemeralKey: %s\n", (joinsplit.ephemeralKey.GetCheapHash()).GetHex());
+            LogPrintf("DisconnectBlock randomSeed: %s\n", (joinsplit.randomSeed.GetCheapHash()).GetHex());
 
         
             BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
