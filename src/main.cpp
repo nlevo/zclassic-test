@@ -3713,7 +3713,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     LogPrintf("No coin database inconsistencies in last %i blocks (%i transactions)\n", chainActive.Height() - pindexState->nHeight, nGoodTransactions);
     
     //TEST
-for (int j = 5; j <= 10; j++)
+for (int j = 20000; j <= 20010; j++)
     {   
         //LogPrintf("INSIDE BLOCK: %d\n", j);
         CBlockIndex* pindex = chainActive[j];
