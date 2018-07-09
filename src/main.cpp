@@ -3764,7 +3764,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
 
                     ofs << "\"commitments\": [\n";
-                    const uint256 last_commitment= joinsplit.commitments.back();
+                    const uint256 last_commitment = joinsplit.commitments.back();
                     BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                         //LogPrintf("cm: %s\n", cm.GetHex());
                         ofs << "\"" << cm.GetHex() << "\"";
@@ -3796,7 +3796,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                         ofs << "}\n";
                     else
                         ofs << "},\n";
-                    transactions_iter transactions_iter + 1;
+                    transactions_iter = transactions_iter + 1;
                 }
                 transactions_iter = 0;
                 //LogPrintf("\n");
