@@ -3760,18 +3760,19 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "\"commitments\": [\n";
                     BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                         //LogPrintf("cm: %s\n", cm.GetHex());
-                        ofs << "\"" << joinsplit.randomSeed.GetHex() << "\",\n";
+                        ofs << "\"" << cm.GetHex() << "\",\n";
                     }
-                    ofs << "},\n";
+                    ofs << "],\n";
                     
                     //nullifiers
                     ofs << "\"nullifiers\": [\n";
                     BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                         //LogPrintf("nf: %s\n", nf.GetHex());
+                         ofs << "\"" << nf.GetHex() << "\",\n";
                     }
                     ofs << "],\n";
+                    ofs << "},\n";
                 }
-                ofs << "],\n";
                 //LogPrintf("\n");
             }
             ofs << "],\n";
