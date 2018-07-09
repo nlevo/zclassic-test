@@ -97,7 +97,7 @@ transactions_iter: 0size: 1},
 "a8a4f00147d66f93f53dedb82b6758665c70a5c464ee47f18c574b715b7d98e1",
 "3b25d30062932c94d339c64a57885a1c1aa74f139c87e632983c907c61d7d539"
 ]
-transactions_iter: 0size: 1},
+transactions_iter: 1size: 1}
 {size before:1
 {
 "vpub_old":"1250000000",
@@ -113,7 +113,7 @@ transactions_iter: 0size: 1},
 "32f8c5b5743757cb6b0172dcc43417a15669c01691fbd670508b63e52bd3653f",
 "bb4fa69ef7f55d12cf01c073cb0ab71ca1b471dbffcd7a3199818e8a24126419"
 ]
-transactions_iter: 0size: 1},
+transactions_iter: 2size: 1},
 {size before:0
 ]
 },
@@ -186,7 +186,7 @@ transactions_iter: 0size: 1},
 "5f61a3e8f39f873ab63dfb0f504f78b977c31de30db887612e82cfde46d05c3c",
 "a4c871aa911cb07200cfafbf14a2c62242f37e1fe18c82eb7ab0100d00f081fc"
 ]
-transactions_iter: 0size: 1},
+transactions_iter: 1size: 1}
 {size before:0
 {size before:1
 {
@@ -203,7 +203,7 @@ transactions_iter: 0size: 1},
 "005968ee15bfe9f7e41b995f942a5057b3f0e9bfebb72499ed2c9e9ac45b2590",
 "32f2c4136093f5d475e78aceae99d0e8dacac926f12d3be3afb6439b6771baaa"
 ]
-transactions_iter: 0size: 1},
+transactions_iter: 2size: 1},
 {size before:1
 {
 "vpub_old":"2499990000",
@@ -219,7 +219,7 @@ transactions_iter: 0size: 1},
 "ac9098cb080ed928b01f534527099486f6f2c0a51382685f6d4098d8dc1f7194",
 "8dc6c464e71f6d5da9ead0e7c5063120fd0fe685b41aeb036720e9b2a1c87492"
 ]
-transactions_iter: 0size: 1},
+transactions_iter: 3size: 1},
 {size before:0
 ]
 },

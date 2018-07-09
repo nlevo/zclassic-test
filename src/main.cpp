@@ -3745,12 +3745,13 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
 
                 // unspend nullifiers
                 int size;
-                size = tx.vjoinsplit.size();
-                ofs << "{size before:" << size << "\n";
-
+                
                 //LOOPS THROUGH VJOINSPLIT
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                 for(auto &joinsplit : tx.vjoinsplit) {
+                    size = tx.vjoinsplit.size();
+                    ofs << "{size before:" << size << "\n";
+                    
                     ofs << "{\n";
                     ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
                     ofs << "\"vpub_new\":\"" << joinsplit.vpub_new << "\",\n";
