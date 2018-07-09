@@ -3740,9 +3740,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
-                //int transactions_iter = 0;
+                int transactions_iter = 0;
                 // BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                //for(auto &joinsplit : tx.vjoinsplit) {
+                for(auto &joinsplit : tx.vjoinsplit) {
                     //const uint256 last_vjoinsplit = tx.vjoinsplit.back().randomSeed;
                     ofs << "{\n";
                     ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
@@ -3787,15 +3787,14 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     }
                     ofs << "]\n";
                     // if(joinsplit.randomSeed == last_vjoinsplit)
-                     //ofs << "transactions_iter: " << transactions_iter;
-                     //ofs << "tx.vjoinsplit.size: " << tx.vjoinsplit.size() - 1;
-                    //if(transactions_iter == tx.vjoinsplit.size() - 1)
-                    if(i == 0)
+                     ofs << "transactions_iter: " << transactions_iter;
+                     ofs << "tx.vjoinsplit.size: " << tx.vjoinsplit.size() - 1;
+                    if(transactions_iter == tx.vjoinsplit.size())
                         ofs << "}\n";
                     else
                         ofs << "},\n";
-                    //++transactions_iter;
-                //}
+                    ++transactions_iter;
+                }
                 //LogPrintf("\n");
             }
             ofs << "]\n";
