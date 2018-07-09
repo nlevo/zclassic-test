@@ -3772,7 +3772,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "],\n";
                     
                     //nullifiers
-                    const uint256 last_nullifier = joinsplit.nullifiers.end();
+                    const uint256 last_nullifier = joinsplit.nullifiers.back();
                     ofs << "\"nullifiers\": [\n";
                     BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                         //LogPrintf("nf: %s\n", nf.GetHex());
