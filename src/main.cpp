@@ -3748,8 +3748,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 //const auto size = tx.vjoinsplit.back();
                 //LOOPS THROUGH VJOINSPLIT
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                // for(auto &joinsplit : tx.vjoinsplit) {
-                for(auto &joinsplit = tx.vjoinsplit.begin(); joinsplit != tx.vjoinsplit.end(); ++joinsplit) {
+                std::string randSeed = tx.vjoinsplit.back().GetHex() 
+                for(auto &joinsplit : tx.vjoinsplit) {
+                //for(auto &joinsplit = tx.vjoinsplit.begin(); joinsplit != tx.vjoinsplit.end(); ++joinsplit) {
                     //size = tx.vjoinsplit.size();
                     //ofs << "{size before:" << size << "\n";
 
@@ -3760,8 +3761,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "\"ephemeralKey\":\"" << joinsplit.ephemeralKey.GetHex() << "\",\n";
                     ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     ofs << "\"commitments\": [\n";
+                    
                     const uint256 last_commitment = joinsplit.commitments.back();
-
                     //LOOPS THROUGH COMMITMENTS
                     //BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                     for(auto &cm : joinsplit.commitments) {
@@ -3788,11 +3789,13 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //ofs << "transactions_iter: " << transactions_iter;
                     //ofs << "size: " << size;
                     // if(transactions_iter == size)
-                    // if(tx.vjoinsplit.end() == joinsplit)
-                    if(std:next(joinsplit) ==  tx.vjoinsplit.end())
+                    // if(tx.vjoinsplit.end() == joinsplit) {
+                    if(randSeed == joinsplit.randomSeed.GetHex()) {
                         ofs << "}\n";
-                    else
+                    }
+                    else {
                         ofs << "},\n";
+                    }
                     //transactions_iter = transactions_iter + 1;
                 }
             }
