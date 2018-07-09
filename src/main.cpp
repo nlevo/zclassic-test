@@ -3719,7 +3719,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     
     //TEST
     
-    //file write 
+    //write to file
     boost::filesystem::path p{"test.txt"};
     boost::filesystem::ofstream ofs{p};
      ofs << "{\n\"blocks\": [";
@@ -3740,9 +3740,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
-                const JSDescription &last_vjoinsplit = tx.vjoinsplit.back();
                 BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                     //commitments
+                    const JSDescription last_vjoinsplit = tx.vjoinsplit.back();
                     ofs << "{\n";
                     ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
                     //LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
