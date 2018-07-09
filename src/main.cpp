@@ -3742,6 +3742,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 // unspend nullifiers
                 int transactions_iter = 0;
                 int size = tx.vjoinsplit.size();
+
                 // BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                 for(auto &joinsplit : tx.vjoinsplit) {
                     //const uint256 last_vjoinsplit = tx.vjoinsplit.back().randomSeed;
@@ -3794,7 +3795,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                         ofs << "}\n";
                     else
                         ofs << "},\n";
-                    transactions_iter = transactions_iter + 1;
+                    transactions_iter = 4;
                 }
                 //LogPrintf("\n");
             }
