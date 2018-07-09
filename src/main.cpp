@@ -3762,7 +3762,6 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "\"ephemeralKey\":\"" << joinsplit.ephemeralKey.GetHex() << "\",\n";
                     ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     ofs << "\"commitments\": [\n";
-                     ofs << "k before loop: " << k << "\n";
                     const uint256 last_commitment = joinsplit.commitments.back();
                     //LOOPS THROUGH COMMITMENTS
                     //BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
