@@ -3722,6 +3722,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     //file write 
     boost::filesystem::path p{"test.txt"};
     boost::filesystem::ofstream ofs{p};
+     ofs << "{\n\"blocks\": [";
     for (int j = 20000; j <= 20010; j++)
         {   
             //LogPrintf("INSIDE BLOCK: %d\n", j);
@@ -3758,27 +3759,46 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
 
                     ofs << "\"commitments\": [\n";
+                    std::string last_commitment = joinsplit.commitments.end()->GetHex();
                     BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                         //LogPrintf("cm: %s\n", cm.GetHex());
-                        ofs << "\"" << cm.GetHex() << "\",\n";
+                        ofs << "\"" << cm.GetHex() << "\"";
+                        
+                        if(cm.GetHex() == last_commitment)
+                            ofs << "\n";
+                        else
+                            ofs << ",\n";
                     }
                     ofs << "],\n";
                     
                     //nullifiers
+                    std::string last_nullifier = joinsplit.nullifiers.end()->GetHex();
                     ofs << "\"nullifiers\": [\n";
                     BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                         //LogPrintf("nf: %s\n", nf.GetHex());
-                         ofs << "\"" << nf.GetHex() << "\",\n";
+                         ofs << "\"" << nf.GetHex() << "\"";
+                         
+                         if(nf.GetHex() == last_nullifier) 
+                            ofs << "\n";
+                         else 
+                            ofs << ",\n";
                     }
                     ofs << "],\n";
-                    ofs << "},\n";
+                    if(i == 0)
+                        ofs << "}\n";
+                    else
+                        ofs << "},\n";
                 }
                 //LogPrintf("\n");
             }
-            ofs << "],\n";
+            ofs << "]\n";
             //LogPrintf("\n");
-            ofs << "},\n";
+            if(j == 0)
+                ofs << "}\n";
+            else
+                ofs << "},\n";
         }
+        ofs << "]\n}";
     //TEST END
 
     return true;
