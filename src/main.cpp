@@ -3766,23 +3766,23 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     }
                     ofs << "],\n";
 
-                    // auto last_ciphertext = joinsplit.ciphertexts.back();
-                    // //LOOPS THROUGH CIPHERTEXTS
-                    // ofs << "\"ciphertext\": [\n";
-                    // for(auto &ct : joinsplit.ciphertexts) {
-                    //     ofs << "\"";
-                    //     for(auto &c : ct) {
-                    //         ofs << c;
-                    //     }
-                    //     ofs << "\"";
-                    //     if(ct == last_ciphertext)
-                    //         ofs << "\n";
-                    //     else
-                    //         ofs << ",\n";
-                    // }
-                    // ofs << "],\n";
+                    //LOOPS THROUGH CIPHERTEXTS
+                    auto last_ciphertext = joinsplit.ciphertexts.back();
+                    ofs << "\"ciphertext\": [\n";
+                    for(auto &ct : joinsplit.ciphertexts) {
+                        ofs << "\"";
+                        for(auto &c : ct) {
+                            ofs << c;
+                        }
+                        ofs << "\"";
+                        if(ct == last_ciphertext)
+                            ofs << "\n";
+                        else
+                            ofs << ",\n";
+                    }
+                    ofs << "],\n";
 
-                     //LOOPS THROUGH MACS
+                    //LOOPS THROUGH MACS
                     const uint256 last_mac = joinsplit.macs.back();
                     ofs << "\"macs\": [\n";
                     for(auto &mac : joinsplit.macs) {
