@@ -1,218 +1,187 @@
 {
-"blocks": [{
-"block":"20000",
-"transactions":[
-]
-},
-{
-"block":"20001",
-"transactions":[
-]
-},
-{
-"block":"20002",
-"transactions":[
-]
-},
-{
-"block":"20003",
-"transactions":[
-{
-"vpub_old":"1249990000",
-"vpub_new":"0",
-"anchor":"f12d84a3a9996e6dace0457bb5c773ed8f0c55fe2a8debd5df8d9851eae65e47",
-"ephemeralKey":"75d989b509bd1acddec66fd7124bc35d0ee103eaaadfd2f8ef944ec1ee13b07a",
-"randomSeed":"1e4371d48ff449734fb836d2bda713ed33a298d22fecc05961674d7db7ad2327",
-"commitments": [
-"55f209be79731f727c97482fb6967b97b59ecd243d381fa7488f888238e680db",
-"525b26d55e506b32e823df6d07e9906f3309ddb2a3ca8a2b392a50ad7cc281d0"
-],
-"nullifiers": [
-"6b701b416948bff6771758e95c1ae6580b19721e86cc6bee461c545b5bed999f",
-"33bd31b5312b50efcfeda511e92ce5f5c332c77179605ef8b7f559b09390ad69"
-]
-k: 0
-}
-]
-},
-{
-"block":"20004",
-"transactions":[
-{
-"vpub_old":"0",
-"vpub_new":"1249990000",
-"anchor":"f12d84a3a9996e6dace0457bb5c773ed8f0c55fe2a8debd5df8d9851eae65e47",
-"ephemeralKey":"27610c841b865653ef23c738eb48d4cdfc9b40c577b9d6c83ac1a8f1124da0d1",
-"randomSeed":"83afdc487560c0b696d3300085dae11fb96b8500f05d15fb72954b99ee480a20",
-"commitments": [
-"4badd66a256c253ef191bfd19b7b1c8dcab0e51c296c8caf2d40a5d377671236",
-"d8e9d5d2f1d3810582aa7a8dd4ce7877c3dbd6bf407f7e2bbafac3a169e9fe11"
-],
-"nullifiers": [
-"5f1fcbd3d280e7fbc0b8ead589e06b7856e0132095e6025efd622c4a56d702a4",
-"69dd9a8357e54371e27d2fbddf049af79d528f7f13816a5880d61ced0d9f09ef"
-]
-k: 0
-}
-]
-},
-{
-"block":"20005",
-"transactions":[
-{
-"vpub_old":"1250030000",
-"vpub_new":"0",
-"anchor":"351f7244629fd2f853b7e5c6e02be893afd4ffa18b5a7a65e30ec14e08ba31b9",
-"ephemeralKey":"6a0de36cd930fdfd39fe8bebdd97e89c473d3b4e745a68cad207d3df32859be4",
-"randomSeed":"8a1b40e77d7ee5a0a743a29e3c25d5a0b6c0905d2362cc9f2ad65aba8e823779",
-"commitments": [
-"3ed967079a0d583f07143859f907bf989e934f286f0d5527176f9df894d314df",
-"cd6d91d4e54491f32608671f5cfd45eb8d9c71028b48ea8dec83884074a28675"
-],
-"nullifiers": [
-"6ef0c5838042fccd4642c7369621137db335f1b9f39558b10608944b77d57aae",
-"d72379c163d0361648ca12c91f2277ba4468b4571b42579f102f1691ef3b1045"
-]
-k: 0
-}
-{
-"vpub_old":"1249990000",
-"vpub_new":"0",
-"anchor":"351f7244629fd2f853b7e5c6e02be893afd4ffa18b5a7a65e30ec14e08ba31b9",
-"ephemeralKey":"09e33f89cd0b580046851bc5b27e53dd8c66f484097fb2850bd79f24317425af",
-"randomSeed":"e1c66210cf66c17a76a7d1c24005a0816c20b20a788ce7b08899ff1d52ac8957",
-"commitments": [
-"5a1ab851dbb35c1c57b2d421410a6f8c4208dcea0d3a4864620cbd615193b63e",
-"eb15312c07aea9452f515efa6d51e799063fd14c5db72659637d0e75fbb48c2c"
-],
-"nullifiers": [
-"a8a4f00147d66f93f53dedb82b6758665c70a5c464ee47f18c574b715b7d98e1",
-"3b25d30062932c94d339c64a57885a1c1aa74f139c87e632983c907c61d7d539"
-]
-k: 0
-}
-{
-"vpub_old":"1250000000",
-"vpub_new":"0",
-"anchor":"351f7244629fd2f853b7e5c6e02be893afd4ffa18b5a7a65e30ec14e08ba31b9",
-"ephemeralKey":"6f9fc05bcebd0eb2e71f4dce92e72ed96893658ae94afa9264d14a8c7daac718",
-"randomSeed":"a6c9e35f584d3699b2eec990128d10a88658ee30b872e546321c79f932ac6b2f",
-"commitments": [
-"bf76d6d3b472e5d2f9b9a79205d174acf50d6d76303cfea3fa76dac34047036a",
-"7e17c21fd7e80168d43b31967d49e591d28ea7fee1cc76bc0aa742b57692b273"
-],
-"nullifiers": [
-"32f8c5b5743757cb6b0172dcc43417a15669c01691fbd670508b63e52bd3653f",
-"bb4fa69ef7f55d12cf01c073cb0ab71ca1b471dbffcd7a3199818e8a24126419"
-]
-k: 0
-}
-]
-},
-{
-"block":"20006",
-"transactions":[
-]
-},
-{
-"block":"20007",
-"transactions":[
-]
-},
-{
-"block":"20008",
-"transactions":[
-{
-"vpub_old":"0",
-"vpub_new":"1249990000",
-"anchor":"266e9edd4949279dea8a9aca30a2a45723e5b1f289d17ca6119f9ff20fa762ed",
-"ephemeralKey":"45669598cfcca2531aecf5b419cc55aade74dcf4995b1e46ce6a16ec392fa2e9",
-"randomSeed":"0bcc250b228845441d621e1daee0b0ffa5934516a660bd65d846b78cecce7ab0",
-"commitments": [
-"73ae66dcb70d47899ce93df7b1f4613d2c915f5259147a996867dbe24ea3aad8",
-"3eec6d45d5eb2a48fbe649cc4f0f1f3d4060c9ecc45d70dfd5e2d51667471693"
-],
-"nullifiers": [
-"4e1401e0c8fcb4fb712f0148f742f774cb0c1d5ab98f4a24234013ac2bc211a0",
-"5f234ea5501b334ab972ebd19896ec1aa3ee18ddba90c566179362e13e9d1f4b"
-]
-k: 0
-}
-]
-},
-{
-"block":"20009",
-"transactions":[
-{
-"vpub_old":"0",
-"vpub_new":"874868635",
-"anchor":"473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
-"ephemeralKey":"61cc8ec0db1b4d49dcfe9025718a75dbc95119e954785087d8c3be54833de0c1",
-"randomSeed":"d3242d11e9c84d217f4fa7efc4d508cceebe544db87dbdcc2b2b8121ca97ca07",
-"commitments": [
-"785e3835eab04072028f2e1712ce124ff5c1f793dd679677963b53c04fcbe64e",
-"48ad6f28c7a396562ba436518d55fa8be190c7808a35e35c41daf8b1ceb0ae5a"
-],
-"nullifiers": [
-"daf3c20348aaead650ff392074eb61382e667b4c9687f033e10ddae98dee0874",
-"9c71f85c40aca40542ead963f894822b1636c27037fcd6faac5461209af9da5b"
-]
-k: 0
-}
-{
-"vpub_old":"0",
-"vpub_new":"1250030000",
-"anchor":"473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
-"ephemeralKey":"43d373d852f4abca903bc07423c59cf853077fefce4234a2f71522b9bc78b1a5",
-"randomSeed":"b077582641ca477ce9c1f57d8d3262f4b0a00ac9be88e638888f6ea5888fc18d",
-"commitments": [
-"f6ed21a6de57219f7b5e8d5b2127e440f0ac06cef55fee19742a1b40f79ff72b",
-"b709dc96a62901ca0e6f2d7242e62ce22cd3c7827aa44ba157882340818aabd6"
-],
-"nullifiers": [
-"5f61a3e8f39f873ab63dfb0f504f78b977c31de30db887612e82cfde46d05c3c",
-"a4c871aa911cb07200cfafbf14a2c62242f37e1fe18c82eb7ab0100d00f081fc"
-]
-k: 0
-}
-{
-"vpub_old":"1249990000",
-"vpub_new":"0",
-"anchor":"473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
-"ephemeralKey":"3e53983b3b955789b06a4a81c27a31c19b6bad52f6877c564a98d784441fe1a5",
-"randomSeed":"b428eeba562f2a222a28ea4480a1b96c65e28d1c2a349b5cad68021331ea4ac4",
-"commitments": [
-"353ac828b28b791d83e17ac528f3e3d4e1969f6258f2c070a297cbbaefc7f27a",
-"4541023aac6f97318cea7f0db10da998e833a6d24868e9bb84c188aace192840"
-],
-"nullifiers": [
-"005968ee15bfe9f7e41b995f942a5057b3f0e9bfebb72499ed2c9e9ac45b2590",
-"32f2c4136093f5d475e78aceae99d0e8dacac926f12d3be3afb6439b6771baaa"
-]
-k: 0
-}
-{
-"vpub_old":"2499990000",
-"vpub_new":"0",
-"anchor":"473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
-"ephemeralKey":"04990d06f8131a37258c7e6a06bd7ec26bc344ee5520d08b908a6f021b353714",
-"randomSeed":"85180551f71198600ba2b2b754d21bbbd0bd751cb3efc8dd98e489d762a30caa",
-"commitments": [
-"b586c665ca4d2faf3ed3f1d6402a3776b2e5373269b4947a1fd086ae784916b1",
-"63e692715e396516269537544807c164d7eddb2700eb2dee474946f5c9bc8627"
-],
-"nullifiers": [
-"ac9098cb080ed928b01f534527099486f6f2c0a51382685f6d4098d8dc1f7194",
-"8dc6c464e71f6d5da9ead0e7c5063120fd0fe685b41aeb036720e9b2a1c87492"
-]
-k: 0
-}
-]
-},
-{
-"block":"20010",
-"transactions":[
-]
-},
-]
+    "blocks": [{
+            "block": "20000",
+            "transactions": []
+        },
+        {
+            "block": "20001",
+            "transactions": []
+        },
+        {
+            "block": "20002",
+            "transactions": []
+        },
+        {
+            "block": "20003",
+            "transactions": [{
+                "vpub_old": "1249990000",
+                "vpub_new": "0",
+                "anchor": "f12d84a3a9996e6dace0457bb5c773ed8f0c55fe2a8debd5df8d9851eae65e47",
+                "ephemeralKey": "75d989b509bd1acddec66fd7124bc35d0ee103eaaadfd2f8ef944ec1ee13b07a",
+                "randomSeed": "1e4371d48ff449734fb836d2bda713ed33a298d22fecc05961674d7db7ad2327",
+                "commitments": [
+                    "55f209be79731f727c97482fb6967b97b59ecd243d381fa7488f888238e680db",
+                    "525b26d55e506b32e823df6d07e9906f3309ddb2a3ca8a2b392a50ad7cc281d0"
+                ],
+                "nullifiers": [
+                    "6b701b416948bff6771758e95c1ae6580b19721e86cc6bee461c545b5bed999f",
+                    "33bd31b5312b50efcfeda511e92ce5f5c332c77179605ef8b7f559b09390ad69"
+                ]
+            }]
+        },
+        {
+            "block": "20004",
+            "transactions": [{
+                "vpub_old": "0",
+                "vpub_new": "1249990000",
+                "anchor": "f12d84a3a9996e6dace0457bb5c773ed8f0c55fe2a8debd5df8d9851eae65e47",
+                "ephemeralKey": "27610c841b865653ef23c738eb48d4cdfc9b40c577b9d6c83ac1a8f1124da0d1",
+                "randomSeed": "83afdc487560c0b696d3300085dae11fb96b8500f05d15fb72954b99ee480a20",
+                "commitments": [
+                    "4badd66a256c253ef191bfd19b7b1c8dcab0e51c296c8caf2d40a5d377671236",
+                    "d8e9d5d2f1d3810582aa7a8dd4ce7877c3dbd6bf407f7e2bbafac3a169e9fe11"
+                ],
+                "nullifiers": [
+                    "5f1fcbd3d280e7fbc0b8ead589e06b7856e0132095e6025efd622c4a56d702a4",
+                    "69dd9a8357e54371e27d2fbddf049af79d528f7f13816a5880d61ced0d9f09ef"
+                ]
+            }]
+        },
+        {
+            "block": "20005",
+            "transactions": [{
+                "vpub_old": "1250030000",
+                "vpub_new": "0",
+                "anchor": "351f7244629fd2f853b7e5c6e02be893afd4ffa18b5a7a65e30ec14e08ba31b9",
+                "ephemeralKey": "6a0de36cd930fdfd39fe8bebdd97e89c473d3b4e745a68cad207d3df32859be4",
+                "randomSeed": "8a1b40e77d7ee5a0a743a29e3c25d5a0b6c0905d2362cc9f2ad65aba8e823779",
+                "commitments": [
+                    "3ed967079a0d583f07143859f907bf989e934f286f0d5527176f9df894d314df",
+                    "cd6d91d4e54491f32608671f5cfd45eb8d9c71028b48ea8dec83884074a28675"
+                ],
+                "nullifiers": [
+                    "6ef0c5838042fccd4642c7369621137db335f1b9f39558b10608944b77d57aae",
+                    "d72379c163d0361648ca12c91f2277ba4468b4571b42579f102f1691ef3b1045"
+                ]
+            }, {
+                "vpub_old": "1249990000",
+                "vpub_new": "0",
+                "anchor": "351f7244629fd2f853b7e5c6e02be893afd4ffa18b5a7a65e30ec14e08ba31b9",
+                "ephemeralKey": "09e33f89cd0b580046851bc5b27e53dd8c66f484097fb2850bd79f24317425af",
+                "randomSeed": "e1c66210cf66c17a76a7d1c24005a0816c20b20a788ce7b08899ff1d52ac8957",
+                "commitments": [
+                    "5a1ab851dbb35c1c57b2d421410a6f8c4208dcea0d3a4864620cbd615193b63e",
+                    "eb15312c07aea9452f515efa6d51e799063fd14c5db72659637d0e75fbb48c2c"
+                ],
+                "nullifiers": [
+                    "a8a4f00147d66f93f53dedb82b6758665c70a5c464ee47f18c574b715b7d98e1",
+                    "3b25d30062932c94d339c64a57885a1c1aa74f139c87e632983c907c61d7d539"
+                ]
+            }, {
+                "vpub_old": "1250000000",
+                "vpub_new": "0",
+                "anchor": "351f7244629fd2f853b7e5c6e02be893afd4ffa18b5a7a65e30ec14e08ba31b9",
+                "ephemeralKey": "6f9fc05bcebd0eb2e71f4dce92e72ed96893658ae94afa9264d14a8c7daac718",
+                "randomSeed": "a6c9e35f584d3699b2eec990128d10a88658ee30b872e546321c79f932ac6b2f",
+                "commitments": [
+                    "bf76d6d3b472e5d2f9b9a79205d174acf50d6d76303cfea3fa76dac34047036a",
+                    "7e17c21fd7e80168d43b31967d49e591d28ea7fee1cc76bc0aa742b57692b273"
+                ],
+                "nullifiers": [
+                    "32f8c5b5743757cb6b0172dcc43417a15669c01691fbd670508b63e52bd3653f",
+                    "bb4fa69ef7f55d12cf01c073cb0ab71ca1b471dbffcd7a3199818e8a24126419"
+                ]
+            }]
+        },
+        {
+            "block": "20006",
+            "transactions": []
+        },
+        {
+            "block": "20007",
+            "transactions": []
+        },
+        {
+            "block": "20008",
+            "transactions": [{
+                "vpub_old": "0",
+                "vpub_new": "1249990000",
+                "anchor": "266e9edd4949279dea8a9aca30a2a45723e5b1f289d17ca6119f9ff20fa762ed",
+                "ephemeralKey": "45669598cfcca2531aecf5b419cc55aade74dcf4995b1e46ce6a16ec392fa2e9",
+                "randomSeed": "0bcc250b228845441d621e1daee0b0ffa5934516a660bd65d846b78cecce7ab0",
+                "commitments": [
+                    "73ae66dcb70d47899ce93df7b1f4613d2c915f5259147a996867dbe24ea3aad8",
+                    "3eec6d45d5eb2a48fbe649cc4f0f1f3d4060c9ecc45d70dfd5e2d51667471693"
+                ],
+                "nullifiers": [
+                    "4e1401e0c8fcb4fb712f0148f742f774cb0c1d5ab98f4a24234013ac2bc211a0",
+                    "5f234ea5501b334ab972ebd19896ec1aa3ee18ddba90c566179362e13e9d1f4b"
+                ]
+            }]
+        },
+        {
+            "block": "20009",
+            "transactions": [{
+                "vpub_old": "0",
+                "vpub_new": "874868635",
+                "anchor": "473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
+                "ephemeralKey": "61cc8ec0db1b4d49dcfe9025718a75dbc95119e954785087d8c3be54833de0c1",
+                "randomSeed": "d3242d11e9c84d217f4fa7efc4d508cceebe544db87dbdcc2b2b8121ca97ca07",
+                "commitments": [
+                    "785e3835eab04072028f2e1712ce124ff5c1f793dd679677963b53c04fcbe64e",
+                    "48ad6f28c7a396562ba436518d55fa8be190c7808a35e35c41daf8b1ceb0ae5a"
+                ],
+                "nullifiers": [
+                    "daf3c20348aaead650ff392074eb61382e667b4c9687f033e10ddae98dee0874",
+                    "9c71f85c40aca40542ead963f894822b1636c27037fcd6faac5461209af9da5b"
+                ]
+            }, {
+                "vpub_old": "0",
+                "vpub_new": "1250030000",
+                "anchor": "473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
+                "ephemeralKey": "43d373d852f4abca903bc07423c59cf853077fefce4234a2f71522b9bc78b1a5",
+                "randomSeed": "b077582641ca477ce9c1f57d8d3262f4b0a00ac9be88e638888f6ea5888fc18d",
+                "commitments": [
+                    "f6ed21a6de57219f7b5e8d5b2127e440f0ac06cef55fee19742a1b40f79ff72b",
+                    "b709dc96a62901ca0e6f2d7242e62ce22cd3c7827aa44ba157882340818aabd6"
+                ],
+                "nullifiers": [
+                    "5f61a3e8f39f873ab63dfb0f504f78b977c31de30db887612e82cfde46d05c3c",
+                    "a4c871aa911cb07200cfafbf14a2c62242f37e1fe18c82eb7ab0100d00f081fc"
+                ]
+            }, {
+                "vpub_old": "1249990000",
+                "vpub_new": "0",
+                "anchor": "473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
+                "ephemeralKey": "3e53983b3b955789b06a4a81c27a31c19b6bad52f6877c564a98d784441fe1a5",
+                "randomSeed": "b428eeba562f2a222a28ea4480a1b96c65e28d1c2a349b5cad68021331ea4ac4",
+                "commitments": [
+                    "353ac828b28b791d83e17ac528f3e3d4e1969f6258f2c070a297cbbaefc7f27a",
+                    "4541023aac6f97318cea7f0db10da998e833a6d24868e9bb84c188aace192840"
+                ],
+                "nullifiers": [
+                    "005968ee15bfe9f7e41b995f942a5057b3f0e9bfebb72499ed2c9e9ac45b2590",
+                    "32f2c4136093f5d475e78aceae99d0e8dacac926f12d3be3afb6439b6771baaa"
+                ]
+            }, {
+                "vpub_old": "2499990000",
+                "vpub_new": "0",
+                "anchor": "473c53200af830547ca96f7f8da7978ba7d3adfa3bf94c979878712d63f1d1d2",
+                "ephemeralKey": "04990d06f8131a37258c7e6a06bd7ec26bc344ee5520d08b908a6f021b353714",
+                "randomSeed": "85180551f71198600ba2b2b754d21bbbd0bd751cb3efc8dd98e489d762a30caa",
+                "commitments": [
+                    "b586c665ca4d2faf3ed3f1d6402a3776b2e5373269b4947a1fd086ae784916b1",
+                    "63e692715e396516269537544807c164d7eddb2700eb2dee474946f5c9bc8627"
+                ],
+                "nullifiers": [
+                    "ac9098cb080ed928b01f534527099486f6f2c0a51382685f6d4098d8dc1f7194",
+                    "8dc6c464e71f6d5da9ead0e7c5063120fd0fe685b41aeb036720e9b2a1c87492"
+                ]
+            }]
+        },
+        {
+            "block": "20010",
+            "transactions": []
+        }
+    ]
 }

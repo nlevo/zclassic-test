@@ -3752,7 +3752,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 //LOOPS THROUGH VJOINSPLIT
                 int k;
                 for (k = tx.vjoinsplit.size() - 1; k >= 0; k--) {
-                // for(auto &joinsplit : tx.vjoinsplit) {
+                //for(auto &joinsplit : tx.vjoinsplit) {
                     const JSDescription &joinsplit = tx.vjoinsplit[k];
 
                     ofs << "{\n";
@@ -3762,7 +3762,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "\"ephemeralKey\":\"" << joinsplit.ephemeralKey.GetHex() << "\",\n";
                     ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     ofs << "\"commitments\": [\n";
-                    
+                     ofs << "k before loop: " << k << "\n";
                     const uint256 last_commitment = joinsplit.commitments.back();
                     //LOOPS THROUGH COMMITMENTS
                     //BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
@@ -3789,16 +3789,16 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "]\n";
                     //ofs << "transactions_iter: " << transactions_iter;
                     //ofs << "size: " << size;
-                    ofs << "k: " << k << "\n";
                     LogPrintf("TEST: %d\n", k);
                     if(k == 0) {
-                    // if(tx.vjoinsplit.end() == joinsplit) {
+                    //if(tx.vjoinsplit.end() == joinsplit) {
                         ofs << "}\n";
                     }
                     else {
                         ofs << "},\n";
                     }
                     transactions_iter = transactions_iter + 1;
+                    ofs << "k: " << k << "\n";
                 }
             }
             transactions_iter = 0;
