@@ -3746,9 +3746,12 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 // unspend nullifiers
                 //int size;
                 //const auto size = tx.vjoinsplit.back();
-                //LOOPS THROUGH VJOINSPLIT
+                std::string randSeed;
+                randSeed.assign(tx.vjoinsplit.back().randomSeed.GetHex());
+                
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                std::string randSeed = tx.vjoinsplit.back().randomSeed.GetHex();
+                
+                //LOOPS THROUGH VJOINSPLIT
                 for(auto &joinsplit : tx.vjoinsplit) {
                 //for(auto &joinsplit = tx.vjoinsplit.begin(); joinsplit != tx.vjoinsplit.end(); ++joinsplit) {
                     //size = tx.vjoinsplit.size();
