@@ -31,7 +31,7 @@
 "6b701b416948bff6771758e95c1ae6580b19721e86cc6bee461c545b5bed999f",
 "33bd31b5312b50efcfeda511e92ce5f5c332c77179605ef8b7f559b09390ad69"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 ]
 },
 {
@@ -51,7 +51,7 @@
 "5f1fcbd3d280e7fbc0b8ead589e06b7856e0132095e6025efd622c4a56d702a4",
 "69dd9a8357e54371e27d2fbddf049af79d528f7f13816a5880d61ced0d9f09ef"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 ]
 },
 {
@@ -71,7 +71,7 @@
 "6ef0c5838042fccd4642c7369621137db335f1b9f39558b10608944b77d57aae",
 "d72379c163d0361648ca12c91f2277ba4468b4571b42579f102f1691ef3b1045"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 {
 "vpub_old":"1249990000",
 "vpub_new":"0",
@@ -86,7 +86,7 @@
 "a8a4f00147d66f93f53dedb82b6758665c70a5c464ee47f18c574b715b7d98e1",
 "3b25d30062932c94d339c64a57885a1c1aa74f139c87e632983c907c61d7d539"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 {
 "vpub_old":"1250000000",
 "vpub_new":"0",
@@ -101,7 +101,7 @@
 "32f8c5b5743757cb6b0172dcc43417a15669c01691fbd670508b63e52bd3653f",
 "bb4fa69ef7f55d12cf01c073cb0ab71ca1b471dbffcd7a3199818e8a24126419"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 ]
 },
 {
@@ -131,7 +131,7 @@
 "4e1401e0c8fcb4fb712f0148f742f774cb0c1d5ab98f4a24234013ac2bc211a0",
 "5f234ea5501b334ab972ebd19896ec1aa3ee18ddba90c566179362e13e9d1f4b"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 ]
 },
 {
@@ -151,7 +151,7 @@
 "daf3c20348aaead650ff392074eb61382e667b4c9687f033e10ddae98dee0874",
 "9c71f85c40aca40542ead963f894822b1636c27037fcd6faac5461209af9da5b"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 {
 "vpub_old":"0",
 "vpub_new":"1250030000",
@@ -166,7 +166,7 @@
 "5f61a3e8f39f873ab63dfb0f504f78b977c31de30db887612e82cfde46d05c3c",
 "a4c871aa911cb07200cfafbf14a2c62242f37e1fe18c82eb7ab0100d00f081fc"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 {
 "vpub_old":"1249990000",
 "vpub_new":"0",
@@ -181,7 +181,7 @@
 "005968ee15bfe9f7e41b995f942a5057b3f0e9bfebb72499ed2c9e9ac45b2590",
 "32f2c4136093f5d475e78aceae99d0e8dacac926f12d3be3afb6439b6771baaa"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 {
 "vpub_old":"2499990000",
 "vpub_new":"0",
@@ -196,7 +196,7 @@
 "ac9098cb080ed928b01f534527099486f6f2c0a51382685f6d4098d8dc1f7194",
 "8dc6c464e71f6d5da9ead0e7c5063120fd0fe685b41aeb036720e9b2a1c87492"
 ]
-}
+transactions_iter: 0tx.vjoinsplit.size: 0}
 ]
 },
 {
