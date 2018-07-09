@@ -3786,6 +3786,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     }
                     ofs << "]\n";
                     // if(joinsplit.randomSeed == last_vjoinsplit)
+                     ofs << "transactions_iter: " << transactions_iter;
+                     ofs << "tx.vjoinsplit.size: " << tx.vjoinsplit.size() - 1;
                     if(transactions_iter == tx.vjoinsplit.size() - 1)
                         ofs << "}\n";
                     else
