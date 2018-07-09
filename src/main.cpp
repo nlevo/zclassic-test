@@ -3787,7 +3787,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //ofs << "transactions_iter: " << transactions_iter;
                     //ofs << "size: " << size;
                     // if(transactions_iter == size)
-                    if(tx.vjoinsplit.back() == joinsplit)
+                    if(tx.vjoinsplit.end() == joinsplit)
                         ofs << "}\n";
                     else
                         ofs << "},\n";
