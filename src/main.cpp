@@ -3745,7 +3745,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
 
                 // unspend nullifiers
                 //int size;
-                auto size = tx.vjoinsplit.back();
+                auto &size = tx.vjoinsplit.back();
                 //LOOPS THROUGH VJOINSPLIT
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                 for(auto &joinsplit : tx.vjoinsplit) {
