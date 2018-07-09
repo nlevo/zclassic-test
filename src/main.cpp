@@ -3730,35 +3730,51 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
             if (!ReadBlockFromDisk(block, pindex))
                 return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
             LogPrintf("INSIDE BLOCK: %d\n", pindex->nHeight);
+            ofs << "{\n";
+            ofs << "\"block\":\"" <<pindex->nHeight << "\",\n";
             for (int i = block.vtx.size() - 1; i >= 0; i--) {
                 LogPrintf("INSIDE TRANSACTION: %d\n", i);
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
+                ofs << "\"transactions\":[\n";
                 BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                     //commitments
                     
-                    ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\"\n";
+                    ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
                     LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
 
-                    ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\"\n";
+                    ofs << "\"vpub_new\":\"" << joinsplit.vpub_new << "\",\n";
                     LogPrintf("vpub_new: %lld\n", joinsplit.vpub_new);
-                    
+
+                    ofs << "\"anchor\":\"" << joinsplit.anchor.GetHex() << "\",\n";
                     LogPrintf("anchor: %s\n", joinsplit.anchor.GetHex());
+
+                    ofs << "\"ephemeralKey\":\"" << joinsplit.ephemeralKey.GetHex() << "\",\n";
                     LogPrintf("ephemeralKey: %s\n", joinsplit.ephemeralKey.GetHex());
+
+                    ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
-                
+
+                    ofs << "\"commitments\": [\n";
                     BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                         LogPrintf("cm: %s\n", cm.GetHex());
+                        ofs << "\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     }
+                    ofs << "],\n";
+                    
                     //nullifiers
+                    ofs << "\"nullifiers\": [\n";
                     BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                         LogPrintf("nf: %s\n", nf.GetHex());
                     }
+                    ofs << "],\n";
                 }
+                ofs << "],\n";
                 LogPrintf("\n");
             }
             LogPrintf("\n");
+            ofs << "},\n";
         }
     //TEST END
 
