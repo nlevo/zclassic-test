@@ -3759,12 +3759,12 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
 
                     ofs << "\"commitments\": [\n";
-                    std::string last_commitment = joinsplit.commitments.end()->GetHex();
+                    const uint256 last_commitment= joinsplit.commitments.back();
                     BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                         //LogPrintf("cm: %s\n", cm.GetHex());
                         ofs << "\"" << cm.GetHex() << "\"";
                         
-                        if(cm.GetHex() == last_commitment)
+                        if(cm == last_commitment)
                             ofs << "\n";
                         else
                             ofs << ",\n";
@@ -3772,18 +3772,18 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "],\n";
                     
                     //nullifiers
-                    std::string last_nullifier = joinsplit.nullifiers.end()->GetHex();
+                    const uint256 last_nullifier = joinsplit.nullifiers.end();
                     ofs << "\"nullifiers\": [\n";
                     BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                         //LogPrintf("nf: %s\n", nf.GetHex());
                          ofs << "\"" << nf.GetHex() << "\"";
                          
-                         if(nf.GetHex() == last_nullifier) 
+                         if(nf == last_nullifier) 
                             ofs << "\n";
                          else 
                             ofs << ",\n";
                     }
-                    ofs << "],\n";
+                    ofs << "]\n";
                     if(i == 0)
                         ofs << "}\n";
                     else
