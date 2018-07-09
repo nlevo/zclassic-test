@@ -3723,7 +3723,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     boost::filesystem::path p{"test.json"};
     boost::filesystem::ofstream ofs{p};
     ofs << "{\n\"blocks\": [";
-    int transactions_iter = 0;
+    int transactions_iter;
+    transactions_iter = 0;
     for (int j = 20000; j <= 20010; j++)
         {   
             //LogPrintf("INSIDE BLOCK: %d\n", j);
