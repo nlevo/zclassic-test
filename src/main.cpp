@@ -3724,8 +3724,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     boost::filesystem::ofstream ofs{p};
     ofs << "{\n\"blocks\": [";
     int transactions_iter;
+    int size;
     transactions_iter = 0;
-     std::string randSeed;
 
     //LOOPS THROUGH BLOCKS
     for (int j = 20000; j <= 20010; j++)
@@ -3744,18 +3744,13 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
 
                 const CTransaction &tx = block.vtx[i];
 
+                size = block.vtx[i].vjoinsplit.size();
+                ofs << "size before:" << size << "\n";
                 // unspend nullifiers
-                //int size;
-                //const auto size = tx.vjoinsplit.back();
-               
-                randSeed.assign(tx.vjoinsplit.end().randomSeed.GetHex());
-                LogPrintf("TEST: %s", randSeed);
-                
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                 
                 //LOOPS THROUGH VJOINSPLIT
                 for(auto &joinsplit : tx.vjoinsplit) {
-                //for(auto &joinsplit = tx.vjoinsplit.begin(); joinsplit != tx.vjoinsplit.end(); ++joinsplit) {
                     //size = tx.vjoinsplit.size();
                     //ofs << "{size before:" << size << "\n";
 
@@ -3791,24 +3786,19 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                             ofs << ",\n";
                     }
                     ofs << "]\n";
-                    //ofs << "transactions_iter: " << transactions_iter;
-                    //ofs << "size: " << size;
-                    // if(transactions_iter == size)
+                    ofs << "transactions_iter: " << transactions_iter;
+                    ofs << "size: " << size;
+                    if(transactions_iter == size) {
                     // if(tx.vjoinsplit.end() == joinsplit) {
-                    
-                    std::string randSeed2;
-                    randSeed2.assign(joinsplit.randomSeed.GetHex());
-                    LogPrintf("TEST2: %s", randSeed2);
-                    if(randSeed == randSeed2) {
                         ofs << "}\n";
                     }
                     else {
                         ofs << "},\n";
                     }
-                    //transactions_iter = transactions_iter + 1;
+                    transactions_iter = transactions_iter + 1;
                 }
             }
-            //transactions_iter = 0;
+            transactions_iter = 0;
             ofs << "]\n";
             if(j == 0)
                 ofs << "}\n";
