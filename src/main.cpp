@@ -3793,7 +3793,10 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //ofs << "size: " << size;
                     // if(transactions_iter == size)
                     // if(tx.vjoinsplit.end() == joinsplit) {
-                    if(randSeed == joinsplit.randomSeed.GetHex()) {
+                    
+                    std::string randSeed2;
+                    randSeed2.assign(joinsplit.randomSeed.GetHex());
+                    if(randSeed == randSeed2) {
                         ofs << "}\n";
                     }
                     else {
