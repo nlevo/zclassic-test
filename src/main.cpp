@@ -3722,7 +3722,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     //write to file
     boost::filesystem::path p{"test.json"};
     boost::filesystem::ofstream ofs{p};
-     ofs << "{\n\"blocks\": [";
+    ofs << "{\n\"blocks\": [";
+    int transactions_iter = 0;
     for (int j = 20000; j <= 20010; j++)
         {   
             //LogPrintf("INSIDE BLOCK: %d\n", j);
@@ -3740,7 +3741,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
-                int transactions_iter = 0;
+                
                 int size = tx.vjoinsplit.size();
 
                 // BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
@@ -3795,8 +3796,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                         ofs << "}\n";
                     else
                         ofs << "},\n";
-                    transactions_iter = 4;
+                    transactions_iter transactions_iter + 1;
                 }
+                transactions_iter = 0;
                 //LogPrintf("\n");
             }
             ofs << "]\n";
