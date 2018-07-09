@@ -3789,6 +3789,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     //ofs << "transactions_iter: " << transactions_iter;
                     //ofs << "size: " << size;
                     ofs << "k: " << k << "\n";
+                    LogPrintf("TEST: %d\n", k);
                     if(k == 0) {
                     // if(tx.vjoinsplit.end() == joinsplit) {
                         ofs << "}\n";
