@@ -39,6 +39,11 @@
 #include <boost/thread.hpp>
 #include <boost/static_assert.hpp>
 
+
+//FOR Z-ADDRESS
+#include <iostream>
+//#include <fstream>
+
 using namespace std;
 
 #if defined(NDEBUG)
@@ -3713,39 +3718,48 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     LogPrintf("No coin database inconsistencies in last %i blocks (%i transactions)\n", chainActive.Height() - pindexState->nHeight, nGoodTransactions);
     
     //TEST
-for (int j = 20000; j <= 20010; j++)
-    {   
-        //LogPrintf("INSIDE BLOCK: %d\n", j);
-        CBlockIndex* pindex = chainActive[j];
-        CBlock block;
-        if (!ReadBlockFromDisk(block, pindex))
-            return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
-        LogPrintf("INSIDE BLOCK: %d\n", pindex->nHeight);
-        for (int i = block.vtx.size() - 1; i >= 0; i--) {
-            LogPrintf("INSIDE TRANSACTION: %d\n", i);
-            const CTransaction &tx = block.vtx[i];
+    
+    //file write 
+    boost::filesystem::path p{"test.txt"};
+    boost::filesystem::ofstream ofs{p};
+    for (int j = 20000; j <= 20010; j++)
+        {   
+            //LogPrintf("INSIDE BLOCK: %d\n", j);
+            CBlockIndex* pindex = chainActive[j];
+            CBlock block;
+            if (!ReadBlockFromDisk(block, pindex))
+                return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
+            LogPrintf("INSIDE BLOCK: %d\n", pindex->nHeight);
+            for (int i = block.vtx.size() - 1; i >= 0; i--) {
+                LogPrintf("INSIDE TRANSACTION: %d\n", i);
+                const CTransaction &tx = block.vtx[i];
 
-            // unspend nullifiers
-            BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                //commitments
-                LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
-                LogPrintf("vpub_new: %lld\n", joinsplit.vpub_new);
-                LogPrintf("anchor: %s\n", joinsplit.anchor.GetHex());
-                LogPrintf("ephemeralKey: %s\n", joinsplit.ephemeralKey.GetHex());
-                LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
-            
-                BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
-                    LogPrintf("cm: %s\n", cm.GetHex());
+                // unspend nullifiers
+                BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
+                    //commitments
+                    
+                    ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\"\n";
+                    LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
+
+                    ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\"\n";
+                    LogPrintf("vpub_new: %lld\n", joinsplit.vpub_new);
+                    
+                    LogPrintf("anchor: %s\n", joinsplit.anchor.GetHex());
+                    LogPrintf("ephemeralKey: %s\n", joinsplit.ephemeralKey.GetHex());
+                    LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
+                
+                    BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
+                        LogPrintf("cm: %s\n", cm.GetHex());
+                    }
+                    //nullifiers
+                    BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
+                        LogPrintf("nf: %s\n", nf.GetHex());
+                    }
                 }
-                //nullifiers
-                BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
-                    LogPrintf("nf: %s\n", nf.GetHex());
-                }
+                LogPrintf("\n");
             }
             LogPrintf("\n");
         }
-        LogPrintf("\n");
-    }
     //TEST END
 
     return true;
