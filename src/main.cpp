@@ -3768,6 +3768,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
 
                     // auto last_ciphertext = joinsplit.ciphertexts.back();
                     // //LOOPS THROUGH CIPHERTEXTS
+                    // ofs << "\"ciphertext\": [\n";
                     // for(auto &ct : joinsplit.ciphertexts) {
                     //     ofs << "\"";
                     //     for(auto &c : ct) {
@@ -3783,6 +3784,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
 
                      //LOOPS THROUGH MACS
                     const uint256 last_mac = joinsplit.macs.back();
+                    ofs << "\"macs\": [\n";
                     for(auto &mac : joinsplit.macs) {
                         ofs << "\"" << mac.GetHex() << "\"";
                         if(mac == last_mac)
