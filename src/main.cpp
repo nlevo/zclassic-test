@@ -3793,7 +3793,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                         ofs << "}\n";
                     else
                         ofs << "},\n";
-                    transactions_iter++;
+                    ++transactions_iter;
                 }
                 //LogPrintf("\n");
             }
