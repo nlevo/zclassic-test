@@ -3725,6 +3725,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     ofs << "{\n\"blocks\": [";
     int transactions_iter;
     transactions_iter = 0;
+
+    //LOOPS THROUGH BLOCKS
     for (int j = 20000; j <= 20010; j++)
         {   
             CBlockIndex* pindex = chainActive[j];
@@ -3735,6 +3737,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
             ofs << "\"block\":\"" <<pindex->nHeight << "\",\n";
 
             ofs << "\"transactions\":[\n";
+
+            //LOOPS THROUGH TRANSACTIONS
             for (int i = block.vtx.size() - 1; i >= 0; i--) {
 
                 const CTransaction &tx = block.vtx[i];
@@ -3744,8 +3748,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 size = tx.vjoinsplit.size();
                 ofs << "{size before:" << size << "\n";
 
-                BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                //for(auto &joinsplit : tx.vjoinsplit) {
+                //LOOPS THROUGH VJOINSPLIT
+                //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
+                for(auto &joinsplit : tx.vjoinsplit) {
                     ofs << "{\n";
                     ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
                     ofs << "\"vpub_new\":\"" << joinsplit.vpub_new << "\",\n";
@@ -3754,7 +3759,10 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     ofs << "\"commitments\": [\n";
                     const uint256 last_commitment = joinsplit.commitments.back();
-                    BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
+
+                    //LOOPS THROUGH COMMITMENTS
+                    //BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
+                    for(auto &cm : joinsplit.commitments) {
                         ofs << "\"" << cm.GetHex() << "\"";
                         if(cm == last_commitment)
                             ofs << "\n";
@@ -3763,10 +3771,11 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     }
                     ofs << "],\n";
                     
-                    //nullifiers
+                    //LOOPS THROUGH NULLIFIERS
                     const uint256 last_nullifier = joinsplit.nullifiers.back();
                     ofs << "\"nullifiers\": [\n";
-                    BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
+                    //BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
+                    for(auto &nf : joinsplit.nullifiers){
                          ofs << "\"" << nf.GetHex() << "\"";
                          if(nf == last_nullifier) 
                             ofs << "\n";
