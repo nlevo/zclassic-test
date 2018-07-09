@@ -2,26 +2,21 @@
 "blocks": [{
 "block":"20000",
 "transactions":[
-{size before:0
 ]
 },
 {
 "block":"20001",
 "transactions":[
-{size before:0
-{size before:0
 ]
 },
 {
 "block":"20002",
 "transactions":[
-{size before:0
 ]
 },
 {
 "block":"20003",
 "transactions":[
-{size before:0
 {size before:1
 {
 "vpub_old":"1249990000",
@@ -38,7 +33,6 @@
 "33bd31b5312b50efcfeda511e92ce5f5c332c77179605ef8b7f559b09390ad69"
 ]
 transactions_iter: 0size: 1},
-{size before:0
 ]
 },
 {
@@ -60,7 +54,6 @@ transactions_iter: 0size: 1},
 "69dd9a8357e54371e27d2fbddf049af79d528f7f13816a5880d61ced0d9f09ef"
 ]
 transactions_iter: 0size: 1},
-{size before:0
 ]
 },
 {
@@ -114,19 +107,16 @@ transactions_iter: 1size: 1}
 "bb4fa69ef7f55d12cf01c073cb0ab71ca1b471dbffcd7a3199818e8a24126419"
 ]
 transactions_iter: 2size: 1},
-{size before:0
 ]
 },
 {
 "block":"20006",
 "transactions":[
-{size before:0
 ]
 },
 {
 "block":"20007",
 "transactions":[
-{size before:0
 ]
 },
 {
@@ -148,8 +138,6 @@ transactions_iter: 2size: 1},
 "5f234ea5501b334ab972ebd19896ec1aa3ee18ddba90c566179362e13e9d1f4b"
 ]
 transactions_iter: 0size: 1},
-{size before:0
-{size before:0
 ]
 },
 {
@@ -187,7 +175,6 @@ transactions_iter: 0size: 1},
 "a4c871aa911cb07200cfafbf14a2c62242f37e1fe18c82eb7ab0100d00f081fc"
 ]
 transactions_iter: 1size: 1}
-{size before:0
 {size before:1
 {
 "vpub_old":"1249990000",
@@ -220,13 +207,11 @@ transactions_iter: 2size: 1},
 "8dc6c464e71f6d5da9ead0e7c5063120fd0fe685b41aeb036720e9b2a1c87492"
 ]
 transactions_iter: 3size: 1},
-{size before:0
 ]
 },
 {
 "block":"20010",
 "transactions":[
-{size before:0
 ]
 },
 ]
