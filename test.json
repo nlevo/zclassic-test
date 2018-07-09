@@ -2,21 +2,27 @@
 "blocks": [{
 "block":"20000",
 "transactions":[
+{size before:0
 ]
 },
 {
 "block":"20001",
 "transactions":[
+{size before:0
+{size before:0
 ]
 },
 {
 "block":"20002",
 "transactions":[
+{size before:0
 ]
 },
 {
 "block":"20003",
 "transactions":[
+{size before:0
+{size before:1
 {
 "vpub_old":"1249990000",
 "vpub_new":"0",
@@ -32,11 +38,13 @@
 "33bd31b5312b50efcfeda511e92ce5f5c332c77179605ef8b7f559b09390ad69"
 ]
 transactions_iter: 0size: 1},
+{size before:0
 ]
 },
 {
 "block":"20004",
 "transactions":[
+{size before:1
 {
 "vpub_old":"0",
 "vpub_new":"1249990000",
@@ -52,11 +60,13 @@ transactions_iter: 0size: 1},
 "69dd9a8357e54371e27d2fbddf049af79d528f7f13816a5880d61ced0d9f09ef"
 ]
 transactions_iter: 0size: 1},
+{size before:0
 ]
 },
 {
 "block":"20005",
 "transactions":[
+{size before:1
 {
 "vpub_old":"1250030000",
 "vpub_new":"0",
@@ -72,6 +82,7 @@ transactions_iter: 0size: 1},
 "d72379c163d0361648ca12c91f2277ba4468b4571b42579f102f1691ef3b1045"
 ]
 transactions_iter: 0size: 1},
+{size before:1
 {
 "vpub_old":"1249990000",
 "vpub_new":"0",
@@ -87,6 +98,7 @@ transactions_iter: 0size: 1},
 "3b25d30062932c94d339c64a57885a1c1aa74f139c87e632983c907c61d7d539"
 ]
 transactions_iter: 0size: 1},
+{size before:1
 {
 "vpub_old":"1250000000",
 "vpub_new":"0",
@@ -102,21 +114,25 @@ transactions_iter: 0size: 1},
 "bb4fa69ef7f55d12cf01c073cb0ab71ca1b471dbffcd7a3199818e8a24126419"
 ]
 transactions_iter: 0size: 1},
+{size before:0
 ]
 },
 {
 "block":"20006",
 "transactions":[
+{size before:0
 ]
 },
 {
 "block":"20007",
 "transactions":[
+{size before:0
 ]
 },
 {
 "block":"20008",
 "transactions":[
+{size before:1
 {
 "vpub_old":"0",
 "vpub_new":"1249990000",
@@ -132,11 +148,14 @@ transactions_iter: 0size: 1},
 "5f234ea5501b334ab972ebd19896ec1aa3ee18ddba90c566179362e13e9d1f4b"
 ]
 transactions_iter: 0size: 1},
+{size before:0
+{size before:0
 ]
 },
 {
 "block":"20009",
 "transactions":[
+{size before:1
 {
 "vpub_old":"0",
 "vpub_new":"874868635",
@@ -152,6 +171,7 @@ transactions_iter: 0size: 1},
 "9c71f85c40aca40542ead963f894822b1636c27037fcd6faac5461209af9da5b"
 ]
 transactions_iter: 0size: 1},
+{size before:1
 {
 "vpub_old":"0",
 "vpub_new":"1250030000",
@@ -167,6 +187,8 @@ transactions_iter: 0size: 1},
 "a4c871aa911cb07200cfafbf14a2c62242f37e1fe18c82eb7ab0100d00f081fc"
 ]
 transactions_iter: 0size: 1},
+{size before:0
+{size before:1
 {
 "vpub_old":"1249990000",
 "vpub_new":"0",
@@ -182,6 +204,7 @@ transactions_iter: 0size: 1},
 "32f2c4136093f5d475e78aceae99d0e8dacac926f12d3be3afb6439b6771baaa"
 ]
 transactions_iter: 0size: 1},
+{size before:1
 {
 "vpub_old":"2499990000",
 "vpub_new":"0",
@@ -197,11 +220,13 @@ transactions_iter: 0size: 1},
 "8dc6c464e71f6d5da9ead0e7c5063120fd0fe685b41aeb036720e9b2a1c87492"
 ]
 transactions_iter: 0size: 1},
+{size before:0
 ]
 },
 {
 "block":"20010",
 "transactions":[
+{size before:0
 ]
 },
 ]

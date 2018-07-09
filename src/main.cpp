@@ -3718,7 +3718,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     LogPrintf("No coin database inconsistencies in last %i blocks (%i transactions)\n", chainActive.Height() - pindexState->nHeight, nGoodTransactions);
     
     //TEST
-    
+
     //write to file
     boost::filesystem::path p{"test.json"};
     boost::filesystem::ofstream ofs{p};
@@ -3727,49 +3727,35 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     transactions_iter = 0;
     for (int j = 20000; j <= 20010; j++)
         {   
-            //LogPrintf("INSIDE BLOCK: %d\n", j);
             CBlockIndex* pindex = chainActive[j];
             CBlock block;
             if (!ReadBlockFromDisk(block, pindex))
                 return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
-            //LogPrintf("INSIDE BLOCK: %d\n", pindex->nHeight);
             ofs << "{\n";
             ofs << "\"block\":\"" <<pindex->nHeight << "\",\n";
 
             ofs << "\"transactions\":[\n";
             for (int i = block.vtx.size() - 1; i >= 0; i--) {
-                //LogPrintf("INSIDE TRANSACTION: %d\n", i);
+
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
-                int size = tx.vjoinsplit.size();
+                int size;
+                size = tx.vjoinsplit.size();
                 ofs << "{size before:" << size << "\n";
 
-                // BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                for(auto &joinsplit : tx.vjoinsplit) {
-                    //const uint256 last_vjoinsplit = tx.vjoinsplit.back().randomSeed;
+                BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
+                //for(auto &joinsplit : tx.vjoinsplit) {
                     ofs << "{\n";
                     ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
-                    //LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
-
                     ofs << "\"vpub_new\":\"" << joinsplit.vpub_new << "\",\n";
-                    //LogPrintf("vpub_new: %lld\n", joinsplit.vpub_new);
-
                     ofs << "\"anchor\":\"" << joinsplit.anchor.GetHex() << "\",\n";
-                    //LogPrintf("anchor: %s\n", joinsplit.anchor.GetHex());
-
                     ofs << "\"ephemeralKey\":\"" << joinsplit.ephemeralKey.GetHex() << "\",\n";
-                    //LogPrintf("ephemeralKey: %s\n", joinsplit.ephemeralKey.GetHex());
-
                     ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
-                    //LogPrintf("randomSeed: %s\n", joinsplit.randomSeed.GetHex());
-
                     ofs << "\"commitments\": [\n";
                     const uint256 last_commitment = joinsplit.commitments.back();
                     BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
-                        //LogPrintf("cm: %s\n", cm.GetHex());
                         ofs << "\"" << cm.GetHex() << "\"";
-                        
                         if(cm == last_commitment)
                             ofs << "\n";
                         else
@@ -3781,18 +3767,15 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     const uint256 last_nullifier = joinsplit.nullifiers.back();
                     ofs << "\"nullifiers\": [\n";
                     BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
-                        //LogPrintf("nf: %s\n", nf.GetHex());
                          ofs << "\"" << nf.GetHex() << "\"";
-                         
                          if(nf == last_nullifier) 
                             ofs << "\n";
                          else 
                             ofs << ",\n";
                     }
                     ofs << "]\n";
-                    // if(joinsplit.randomSeed == last_vjoinsplit)
-                     ofs << "transactions_iter: " << transactions_iter;
-                     ofs << "size: " << size;
+                    ofs << "transactions_iter: " << transactions_iter;
+                    ofs << "size: " << size;
                     if(transactions_iter == size)
                         ofs << "}\n";
                     else
@@ -3809,7 +3792,6 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
         }
         ofs << "]\n}";
     //TEST END
-
     return true;
 }
 
