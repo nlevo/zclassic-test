@@ -3740,9 +3740,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
+                const uint256 &last_vjoinsplit = tx.vjoinsplit.back().randomSeed;
                 BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
-                    //commitments
-                    const JSDescription &last_vjoinsplit = tx.vjoinsplit.back();
                     ofs << "{\n";
                     ofs << "\"vpub_old\":\"" << joinsplit.vpub_old << "\",\n";
                     //LogPrintf("vpub_old: %lld\n", joinsplit.vpub_old);
@@ -3785,7 +3784,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                             ofs << ",\n";
                     }
                     ofs << "]\n";
-                    if(joinsplit == last_vjoinsplit)
+                    if(joinsplit.randomSeed == last_vjoinsplit)
                         ofs << "}\n";
                     else
                         ofs << "},\n";
