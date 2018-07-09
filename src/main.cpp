@@ -3740,7 +3740,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 const CTransaction &tx = block.vtx[i];
 
                 // unspend nullifiers
-                const JSDescription last_vjoinsplit = tx.vjoinsplit.back();
+                const JSDescription &last_vjoinsplit = tx.vjoinsplit.back();
                 BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                     //commitments
                     ofs << "{\n";
