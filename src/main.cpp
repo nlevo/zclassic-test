@@ -3736,23 +3736,15 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 return error("VerifyDB(): *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
             ofs << "{\n";
             ofs << "\"block\":\"" <<pindex->nHeight << "\",\n";
-
             ofs << "\"transactions\":[\n";
 
             //LOOPS THROUGH TRANSACTIONS
             for (int i = block.vtx.size() - 1; i >= 0; i--) {
 
                 const CTransaction &tx = block.vtx[i];
-
-                //size = block.vtx[i].vjoinsplit.capacity();
-                //ofs << "size before:" << size << "\n";
-                // unspend nullifiers
-                //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                 
                 //LOOPS THROUGH VJOINSPLIT
-                
                 for (int k = tx.vjoinsplit.size() - 1; k >= 0; k--) {
-                //for(auto &joinsplit : tx.vjoinsplit) {
                     const JSDescription &joinsplit = tx.vjoinsplit[k];
 
                     ofs << "{\n";
@@ -3762,9 +3754,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     ofs << "\"ephemeralKey\":\"" << joinsplit.ephemeralKey.GetHex() << "\",\n";
                     ofs << "\"randomSeed\":\"" << joinsplit.randomSeed.GetHex() << "\",\n";
                     ofs << "\"commitments\": [\n";
+
                     const uint256 last_commitment = joinsplit.commitments.back();
                     //LOOPS THROUGH COMMITMENTS
-                    //BOOST_FOREACH(const uint256 &cm, joinsplit.commitments) {
                     for(auto &cm : joinsplit.commitments) {
                         ofs << "\"" << cm.GetHex() << "\"";
                         if(cm == last_commitment)
@@ -3773,11 +3765,28 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                             ofs << ",\n";
                     }
                     ofs << "],\n";
+
+                    auto last_ciphertext = joinsplit.ciphertexts.back();
+                    //LOOPS THROUGH CIPHERTEXTS
+                    for(auto &ct : joinsplit.ciphertexts) {
+                        ofs << "\"";
+                        for(auto &c : ct) {
+                            ofs << c;
+                        }
+                        ofs << "\"";
+                        if(ct == last_ciphertext)
+                            ofs << "\n";
+                        else
+                            ofs << ",\n";
+                    }
+                    ofs << "],\n";
+
+
+
                     
                     //LOOPS THROUGH NULLIFIERS
                     const uint256 last_nullifier = joinsplit.nullifiers.back();
                     ofs << "\"nullifiers\": [\n";
-                    //BOOST_FOREACH(const uint256 &nf, joinsplit.nullifiers) {
                     for(auto &nf : joinsplit.nullifiers) {
                          ofs << "\"" << nf.GetHex() << "\"";
                          if(nf == last_nullifier) 
@@ -3786,18 +3795,13 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                             ofs << ",\n";
                     }
                     ofs << "]\n";
-                    //ofs << "transactions_iter: " << transactions_iter;
-                    //ofs << "size: " << size;
-                    //LogPrintf("TEST: %d\n", k);
                     if(k == 0) {
-                    //if(tx.vjoinsplit.end() == joinsplit) {
                         ofs << "}\n";
                     }
                     else {
                         ofs << "},\n";
                     }
                     transactions_iter = transactions_iter + 1;
-                    //ofs << "k: " << k << "\n";
                 }
             }
             transactions_iter = 0;
