@@ -3748,7 +3748,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 //int size;
                 //const auto size = tx.vjoinsplit.back();
                
-                randSeed.assign(tx.vjoinsplit.back().randomSeed.GetHex());
+                randSeed.assign(tx.vjoinsplit.end().randomSeed.GetHex());
                 LogPrintf("TEST: %s", randSeed);
                 
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
