@@ -3725,6 +3725,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     ofs << "{\n\"blocks\": [";
     int transactions_iter;
     transactions_iter = 0;
+     std::string randSeed;
 
     //LOOPS THROUGH BLOCKS
     for (int j = 20000; j <= 20010; j++)
@@ -3746,8 +3747,9 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 // unspend nullifiers
                 //int size;
                 //const auto size = tx.vjoinsplit.back();
-                std::string randSeed;
+               
                 randSeed.assign(tx.vjoinsplit.back().randomSeed.GetHex());
+                LogPrintf("TEST: %s", randomSeed);
                 
                 //BOOST_FOREACH(const JSDescription &joinsplit, tx.vjoinsplit) {
                 
@@ -3796,6 +3798,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     
                     std::string randSeed2;
                     randSeed2.assign(joinsplit.randomSeed.GetHex());
+                    LogPrintf("TEST2: %s", randomSeed2);
                     if(randSeed == randSeed2) {
                         ofs << "}\n";
                     }
