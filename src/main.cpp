@@ -3772,7 +3772,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                     for(auto &ct : joinsplit.ciphertexts) {
                         ofs << "\"";
                         for(auto &c : ct) {
-                            ofs << std::hex << (int)c;
+                            ofs << (int)c;
                         }
                         ofs << "\"";
                         if(ct == last_ciphertext)
