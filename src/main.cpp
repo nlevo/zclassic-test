@@ -30,6 +30,9 @@
 #include "wallet/asyncrpcoperation_sendmany.h"
 #include "wallet/asyncrpcoperation_shieldcoinbase.h"
 
+//TEST
+#include "flat-database.h"
+
 #include <sstream>
 
 #include <boost/algorithm/string/replace.hpp>
@@ -3729,6 +3732,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
 
     //LOOPS THROUGH BLOCKS
     for (int j = 20000; j <= 21000; j++)
+    
         {   
             CBlockIndex* pindex = chainActive[j];
             CBlock block;
@@ -3741,8 +3745,21 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
             //LOOPS THROUGH TRANSACTIONS
             for (int i = block.vtx.size() - 1; i >= 0; i--) {
 
-                const CTransaction &tx = block.vtx[i];
-                
+                CTransaction &tx = block.vtx[i];
+
+                //flatDB 
+                 
+                //write to file
+                 CFlatDB<CTransaction> flatdb1("z-address.dat", "zAddressCache");
+                 flatdb1.Dump(tx);
+
+                 //read from file
+                // CFlatDB<CMasternodeMan> flatdb1("z-address.dat", "zAddressCache");
+                // if(!flatdb1.Load(mnodeman)) {
+                //     return InitError("Failed to load masternode cache from mncache.dat");
+                // }
+                //flatDB end
+
                 //LOOPS THROUGH VJOINSPLIT
                 for (int k = tx.vjoinsplit.size() - 1; k >= 0; k--) {
                     const JSDescription &joinsplit = tx.vjoinsplit[k];
