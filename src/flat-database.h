@@ -53,7 +53,12 @@ private:
         ssObj << objToSave;
         uint256 hash = Hash(ssObj.begin(), ssObj.end());
         ssObj << hash;
-        ssObj << '\0';
+        
+        int sizeOfObject = sizeof(ssObj) + sizeof(uint256);
+        ssObj << sizeOfObject;
+        
+        LogPrintf("sizeOfObject: %d\n", sizeOfObject);
+        LogPrintf("size of int: %d\n", sizeof(int));
 
         // open output file, and associate with CAutoFile
         FILE *file = fopen(pathDB.string().c_str(), "a+");
@@ -92,18 +97,18 @@ private:
 
         //istream& getline (istream&  is, string& str, char delim);
 
-        FILE * pFile;
-        char mystring [10000];
+        // FILE * pFile;
+        // char mystring [10000];
 
-        pFile = fopen(pathDB.string().c_str(), "r");
-        if (pFile == NULL) perror ("Error opening file");
-        else {
-            if ( fgets (mystring , 10000 , pFile) != NULL )
-            puts (mystring);
-            if ( fgets (mystring , 10000 , pFile) != NULL )
-            puts (mystring);
-            fclose (pFile);
-        }
+        // pFile = fopen(pathDB.string().c_str(), "r");
+        // if (pFile == NULL) perror ("Error opening file");
+        // else {
+        //     if ( fgets (mystring , 10000 , pFile) != NULL )
+        //     puts (mystring);
+        //     if ( fgets (mystring , 10000 , pFile) != NULL )
+        //     puts (mystring);
+        //     fclose (pFile);
+        // }
 
         
         // string myString2;
