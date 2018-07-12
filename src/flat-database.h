@@ -75,7 +75,7 @@ private:
     ReadResult Read(T& objToLoad, bool fDryRun = false)
     {
         //LOCK(objToLoad.cs);
-
+        int c;
         int64_t nStart = GetTimeMillis();
         // open input file, and associate with CAutoFile
         FILE *file = fopen(pathDB.string().c_str(), "r+");
@@ -85,6 +85,27 @@ private:
             error("%s: Failed to open file %s", __func__, pathDB.string());
             return FileError;
         }
+
+        FILE * pFile;
+        char mystring [10000];
+
+        pFile = fopen(pathDB.string().c_str(), "r");
+        if (pFile == NULL) perror ("Error opening file");
+        else {
+            if ( fgets (mystring , 10000 , pFile) != NULL )
+            puts (mystring);
+            fclose (pFile);
+        }
+        LogPrintf("STRING: %s", mystring);
+
+        // do {
+        //     c = fgetc (filein);
+        //     if (c != 'z') {
+                
+        //     } else {
+        //         n++;
+        //     }
+        // } while (c != EOF);
 
         // use file size to size memory buffer
         int fileSize = boost::filesystem::file_size(pathDB);
@@ -100,6 +121,7 @@ private:
         try {
             filein.read((char *)&vchData[0], dataSize);
             filein >> hashIn;
+            
         }
         catch (std::exception &e) {
             error("%s: Deserialize or I/O error - %s", __func__, e.what());

@@ -3731,7 +3731,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     transactions_iter = 0;
 
     //LOOPS THROUGH BLOCKS
-    for (int j = 20000; j <= 29000; j++)
+    for (int j = 20000; j <= 20001; j++)
     
         {   
             CBlockIndex* pindex = chainActive[j];
@@ -3756,7 +3756,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                  //read from file
                 CFlatDB<CTransaction> flatdb2("z-address.dat", "zAddressCache");
                 if(!flatdb2.Load(tx2)) {
-                    return LogPrintf("Failed to load masternode cache from mncache.dat");
+                    return LogPrintf("Failed to load transactions from z-address.dat");
                 }
                 //flatDB end
 
