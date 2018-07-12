@@ -48,15 +48,18 @@ private:
 
         // serialize, checksum data up to that point, then append checksum
         CDataStream ssObj(SER_DISK, CLIENT_VERSION);
+
+        int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
+        ssObj << sizeOfObject;
         ssObj << strMagicMessage; // specific magic message for this type of object
         ssObj << FLATDATA(Params().MessageStart()); // network specific magic number
         ssObj << objToSave;
         uint256 hash = Hash(ssObj.begin(), ssObj.end());
         ssObj << hash;
         
-        int sizeOfObject = sizeof(ssObj) + sizeof(uint256);
-        ssObj << sizeOfObject;
-        
+        //int sizeOfObject = sizeof(ssObj) + sizeof(uint256);
+        //ssObj << sizeOfObject;
+
         LogPrintf("sizeOfObject: %d\n", sizeOfObject);
         LogPrintf("size of int: %d\n", sizeof(int));
 
@@ -81,7 +84,7 @@ private:
         return true;
     }
 
-    ReadResult Read(T& objToLoad, bool fDryRun = false)
+    ReadResult Read(T& objToLoad, int index = 0, bool fDryRun = false)
     {
         //LOCK(objToLoad.cs);
         int c;
@@ -136,6 +139,11 @@ private:
         // } while (c != EOF);
 
         // use file size to size memory buffer
+        // for(int i = 0; i < index; i++){
+        //     int fileSize
+
+        // }
+
         int fileSize = boost::filesystem::file_size(pathDB);
         int dataSize = fileSize - sizeof(uint256);
         // Don't try to resize to a negative number if file is small
@@ -221,10 +229,10 @@ public:
         strMagicMessage = strMagicMessageIn;
     }
 
-    bool Load(T& objToLoad)
+    bool Load(T& objToLoad, int index = 0)
     {
         LogPrintf("Reading info from %s...\n", strFilename);
-        ReadResult readResult = Read(objToLoad);
+        ReadResult readResult = Read(objToLoad, index);
         if (readResult == FileError)
             LogPrintf("Missing file %s, will try to recreate\n", strFilename);
         else if (readResult != Ok)
