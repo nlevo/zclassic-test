@@ -3746,18 +3746,18 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
             for (int i = block.vtx.size() - 1; i >= 0; i--) {
 
                 CTransaction &tx = block.vtx[i];
-
+                CTransaction tx2;
                 //flatDB 
                  
                 //write to file
-                 CFlatDB<CTransaction> flatdb1("z-address.dat", "zAddressCache");
-                 flatdb1.Dump(tx);
+                //  CFlatDB<CTransaction> flatdb1("z-address.dat", "zAddressCache");
+                //  flatdb1.Dump(tx);
 
                  //read from file
-                // CFlatDB<CMasternodeMan> flatdb1("z-address.dat", "zAddressCache");
-                // if(!flatdb1.Load(mnodeman)) {
-                //     return InitError("Failed to load masternode cache from mncache.dat");
-                // }
+                CFlatDB<CTransaction> flatdb2("z-address.dat", "zAddressCache");
+                if(!flatdb2.Load(tx2)) {
+                    return LogPrintf("Failed to load masternode cache from mncache.dat");
+                }
                 //flatDB end
 
                 //LOOPS THROUGH VJOINSPLIT
