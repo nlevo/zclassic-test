@@ -96,7 +96,14 @@ private:
             puts (mystring);
             fclose (pFile);
         }
-        LogPrintf("STRING: %s", mystring);
+        //("STRING: %s", mystring);
+        LogPrintf("\nSTRING: ");
+        for( int i = 0 ; i < 10000; i++ ){
+		    if(mystring[i] == '\0')
+                break;
+            LogPrintf("%c", mystring[i]);
+	    }
+	    LogPrintf("\n");
 
         // do {
         //     c = fgetc (filein);

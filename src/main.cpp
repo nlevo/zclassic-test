@@ -3750,8 +3750,8 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                 //flatDB 
                  
                 //write to file
-                //  CFlatDB<CTransaction> flatdb1("z-address.dat", "zAddressCache");
-                //  flatdb1.Dump(tx);
+                 CFlatDB<CTransaction> flatdb1("z-address.dat", "zAddressCache");
+                 flatdb1.Dump(tx);
 
                  //read from file
                 CFlatDB<CTransaction> flatdb2("z-address.dat", "zAddressCache");
