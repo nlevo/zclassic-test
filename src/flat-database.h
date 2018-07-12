@@ -11,6 +11,9 @@
 #include "streams.h"
 #include "util.h"
 
+#include <iostream>
+#include <string>
+
 #include <boost/filesystem.hpp>
 
 /** 
@@ -50,6 +53,7 @@ private:
         ssObj << objToSave;
         uint256 hash = Hash(ssObj.begin(), ssObj.end());
         ssObj << hash;
+        ssObj << '\0';
 
         // open output file, and associate with CAutoFile
         FILE *file = fopen(pathDB.string().c_str(), "a+");
@@ -86,6 +90,8 @@ private:
             return FileError;
         }
 
+        //istream& getline (istream&  is, string& str, char delim);
+
         FILE * pFile;
         char mystring [10000];
 
@@ -94,16 +100,26 @@ private:
         else {
             if ( fgets (mystring , 10000 , pFile) != NULL )
             puts (mystring);
+            if ( fgets (mystring , 10000 , pFile) != NULL )
+            puts (mystring);
             fclose (pFile);
         }
+
+        
+        // string myString2;
+        // std::getline(filein, myString2);
+        // LogPrintf("\nSTRING: %s", myString2);
+        // std::getline(filein, myString2);
+        // LogPrintf("\nSTRING2: %s", myString2);
+
         //("STRING: %s", mystring);
-        LogPrintf("\nSTRING: ");
-        for( int i = 0 ; i < 10000; i++ ){
-		    if(mystring[i] == '\0')
-                break;
-            LogPrintf("%c", mystring[i]);
-	    }
-	    LogPrintf("\n");
+        // LogPrintf("\nSTRING: ");
+        // for( int i = 0 ; i < 10000; i++ ){
+		//     if(mystring[i] == '\0')
+        //         break;
+        //     LogPrintf("%c", mystring[i]);
+	    // }
+	    // LogPrintf("\n");
 
         // do {
         //     c = fgetc (filein);
