@@ -21,6 +21,13 @@
 *   ---------------------------
 */
 
+int Pointer2Int (void* p)
+{
+    union { void* p; int i; } converter;
+    converter.p = p;
+    return converter.i;
+}
+
 template<typename T>
 class CFlatDB
 {
@@ -49,7 +56,7 @@ private:
         // serialize, checksum data up to that point, then append checksum
         CDataStream ssObj(SER_DISK, CLIENT_VERSION);
 
-        int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
+        unsigned int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
         ssObj << sizeOfObject;
         ssObj << strMagicMessage; // specific magic message for this type of object
         ssObj << FLATDATA(Params().MessageStart()); // network specific magic number
@@ -57,6 +64,28 @@ private:
         uint256 hash = Hash(ssObj.begin(), ssObj.end());
         ssObj << hash;
         
+
+
+        // union device_buffer {
+        //     int i;
+        //     unsigned char c[4];
+        // };
+
+        // int main(int argv, char* argc[])
+        // {
+        //     int original = 1054;
+
+        //     union device_buffer db;
+        //     db.i = original;
+
+        //     for (int i = 0; i < 4; i++) {
+        //         printf("c[i] = 0x%x\n", db.c[i]);
+        //     }
+        // }
+
+
+
+
         //int sizeOfObject = sizeof(ssObj) + sizeof(uint256);
         //ssObj << sizeOfObject;
 
@@ -145,6 +174,25 @@ private:
         // }
 
         int fileSize = boost::filesystem::file_size(pathDB);
+
+        // read the size of the next object
+        int sizeOfData;
+        
+        std::vector<unsigned char> vchSize;
+        try {
+            filein.read((char *)&vchSize[0], 4);
+            //filein >> hashIn;
+            
+        }
+        catch (std::exception &e) {
+            error("%s: Deserialize or I/O error - %s", __func__, e.what());
+            return HashReadError;
+        }
+        //sizeOfData = Pointer2Int(vchSize);
+        sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
+
+        LogPrintf("Size of read data is : %d", sizeOfData);
+
         int dataSize = fileSize - sizeof(uint256);
         // Don't try to resize to a negative number if file is small
         if (dataSize < 0)
