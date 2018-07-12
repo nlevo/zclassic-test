@@ -3731,7 +3731,7 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
     transactions_iter = 0;
 
     //LOOPS THROUGH BLOCKS
-    for (int j = 20000; j <= 21000; j++)
+    for (int j = 20000; j <= 29000; j++)
     
         {   
             CBlockIndex* pindex = chainActive[j];

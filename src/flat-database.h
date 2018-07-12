@@ -52,7 +52,7 @@ private:
         ssObj << hash;
 
         // open output file, and associate with CAutoFile
-        FILE *file = fopen(pathDB.string().c_str(), "a");
+        FILE *file = fopen(pathDB.string().c_str(), "a+");
         CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
         if (fileout.IsNull())
             return error("%s: Failed to open file %s", __func__, pathDB.string());
@@ -78,7 +78,7 @@ private:
 
         int64_t nStart = GetTimeMillis();
         // open input file, and associate with CAutoFile
-        FILE *file = fopen(pathDB.string().c_str(), "rb");
+        FILE *file = fopen(pathDB.string().c_str(), "r+");
         CAutoFile filein(file, SER_DISK, CLIENT_VERSION);
         if (filein.IsNull())
         {
@@ -199,22 +199,22 @@ public:
 
         LogPrintf("Verifying %s format...\n", strFilename);
         T tmpObjToLoad;
-        ReadResult readResult = Read(tmpObjToLoad, true);
+       // ReadResult readResult = Read(tmpObjToLoad, true);
 
         // there was an error and it was not an error on file opening => do not proceed
-        if (readResult == FileError)
-            LogPrintf("Missing file %s, will try to recreate\n", strFilename);
-        else if (readResult != Ok)
-        {
-            LogPrintf("Error reading %s: ", strFilename);
-            if(readResult == IncorrectFormat)
-                LogPrintf("%s: Magic is ok but data has invalid format, will try to recreate\n", __func__);
-            else
-            {
-                LogPrintf("%s: File format is unknown or invalid, please fix it manually\n", __func__);
-                return false;
-            }
-        }
+        //if (readResult == FileError)
+          //  LogPrintf("Missing file %s, will try to recreate\n", strFilename);
+        //else if (readResult != Ok)
+        //{
+          //  LogPrintf("Error reading %s: ", strFilename);
+            //if(readResult == IncorrectFormat)
+              //  LogPrintf("%s: Magic is ok but data has invalid format, will try to recreate\n", __func__);
+            //else
+            //{
+              //  LogPrintf("%s: File format is unknown or invalid, please fix it manually\n", __func__);
+                //return false;
+           // }
+       // }
 
         LogPrintf("Writting info to %s...\n", strFilename);
         Write(objToSave);
