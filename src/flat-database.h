@@ -52,7 +52,7 @@ private:
         ssObj << hash;
 
         // open output file, and associate with CAutoFile
-        FILE *file = fopen(pathDB.string().c_str(), "wb");
+        FILE *file = fopen(pathDB.string().c_str(), "a");
         CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
         if (fileout.IsNull())
             return error("%s: Failed to open file %s", __func__, pathDB.string());
