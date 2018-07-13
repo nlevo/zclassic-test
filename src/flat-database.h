@@ -145,8 +145,8 @@ private:
         LogPrintf("2: %c\n", &vchSize[1]);
         LogPrintf("3: %c\n", &vchSize[2]);
         LogPrintf("4: %c\n", &vchSize[3]);
-        //auto sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
-        int sizeOfData = 0;
+        int sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
+        //int sizeOfData = 0;
         //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
 
         LogPrintf("Size of read data is : %d\n", sizeOfData);
