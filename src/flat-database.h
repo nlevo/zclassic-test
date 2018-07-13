@@ -55,6 +55,14 @@ private:
 
         // serialize, checksum data up to that point, then append checksum
         CDataStream ssObj(SER_DISK, CLIENT_VERSION);
+        CDataStream ssObj2(SER_DISK, CLIENT_VERSION);
+        ssObj2 << strMagicMessage; // specific magic message for this type of object
+        ssObj2 << FLATDATA(Params().MessageStart()); // network specific magic number
+        ssObj2 << objToSave;
+        uint256 hash2 = Hash(ssObj2.begin(), ssObj2.end());
+        ssObj2 << hash2;
+        int sizeOfObject2 = sizeof(ssObj2);
+        LogPrintf("Size of Object2: %d", sizeOfObject2);
 
         int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
         ssObj << sizeOfObject;

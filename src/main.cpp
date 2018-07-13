@@ -3754,10 +3754,12 @@ bool CVerifyDB::VerifyDB(CCoinsView *coinsview, int nCheckLevel, int nCheckDepth
                  flatdb1.Dump(tx);
 
                  //read from file
-                CFlatDB<CTransaction> flatdb2("z-address.dat", "zAddressCache");
-                if(!flatdb2.Load(tx2)) {
-                    return LogPrintf("Failed to load transactions from z-address.dat");
-                }
+                 if(j == 20003){
+                    CFlatDB<CTransaction> flatdb2("z-address.dat", "zAddressCache");
+                    if(!flatdb2.Load(tx2)) {
+                        return LogPrintf("Failed to load transactions from z-address.dat");
+                    }
+                 }
                 //flatDB end
 
                 //LOOPS THROUGH VJOINSPLIT
