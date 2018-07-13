@@ -131,25 +131,25 @@ private:
         vchSize.resize(sizeof(int));
         
         try {
-            LogPrintf("Before reading:");
+            LogPrintf("Before reading:\n");
             filein.read((char *)&vchSize[0], 4);
             //filein >> hashIn;
         }
         catch (std::exception &e) {
-            error("%s: Deserialize or I/O error - %s", __func__, e.what());
+            error("%s: Deserialize or I/O error - %s\n", __func__, e.what());
             return HashReadError;
         }
         //sizeOfData = Pointer2Int(vchSize);
-        LogPrintf("Just before reinterpret_cast");
-        LogPrintf("1: %c", &vchSize[0]);
-        LogPrintf("2: %c", &vchSize[1]);
-        LogPrintf("3: %c", &vchSize[2]);
-        LogPrintf("4: %c", &vchSize[3]);
+        LogPrintf("Just before reinterpret_cast\n");
+        LogPrintf("1: %c\n", &vchSize[0]);
+        LogPrintf("2: %c\n", &vchSize[1]);
+        LogPrintf("3: %c\n", &vchSize[2]);
+        LogPrintf("4: %c\n", &vchSize[3]);
         //auto sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
         int sizeOfData = 0;
         //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
 
-        LogPrintf("Size of read data is : %d", sizeOfData);
+        LogPrintf("Size of read data is : %d\n", sizeOfData);
 
         int dataSize = fileSize - sizeof(uint256);
         // Don't try to resize to a negative number if file is small
