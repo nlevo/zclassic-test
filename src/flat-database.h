@@ -189,7 +189,8 @@ private:
             return HashReadError;
         }
         //sizeOfData = Pointer2Int(vchSize);
-        sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
+        sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
+        //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
 
         LogPrintf("Size of read data is : %d", sizeOfData);
 
