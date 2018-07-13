@@ -62,7 +62,7 @@ private:
         uint256 hash2 = Hash(ssObj2.begin(), ssObj2.end());
         ssObj2 << hash2;
         int sizeOfObject2 = sizeof(ssObj2);
-        LogPrintf("Size of Object2: %d", sizeOfObject2);
+        LogPrintf("Size of Object2: %d\n", sizeOfObject2);
 
         int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
         ssObj << sizeOfObject;
@@ -105,6 +105,7 @@ private:
         // Write and commit header, data
         try {
             fileout << ssObj;
+            LogPrintf("Size of fileout: ", sizeof(fileout));
         }
         catch (std::exception &e) {
             return error("%s: Serialize or I/O error - %s", __func__, e.what());
