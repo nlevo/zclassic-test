@@ -145,6 +145,7 @@ private:
         int sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
 
         LogPrintf("Size of read data is : %d\n", sizeOfData);
+        LogPrintf("File size : %d\n", fileSize);
 
         //int dataSize = fileSize - sizeof(uint256);
         // Don't try to resize to a negative number if file is small
@@ -154,6 +155,8 @@ private:
         //vchData.resize(dataSize);
         vchData.resize(sizeOfData - sizeof(uint256));
         uint256 hashIn;
+        
+        LogPrintf("Size - uint256 : %d\n", sizeOfData - sizeof(uint256));
 
         // read data and checksum from file
         try {
