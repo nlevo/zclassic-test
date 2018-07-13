@@ -127,51 +127,6 @@ private:
             return FileError;
         }
 
-        //istream& getline (istream&  is, string& str, char delim);
-
-        // FILE * pFile;
-        // char mystring [10000];
-
-        // pFile = fopen(pathDB.string().c_str(), "r");
-        // if (pFile == NULL) perror ("Error opening file");
-        // else {
-        //     if ( fgets (mystring , 10000 , pFile) != NULL )
-        //     puts (mystring);
-        //     if ( fgets (mystring , 10000 , pFile) != NULL )
-        //     puts (mystring);
-        //     fclose (pFile);
-        // }
-
-        
-        // string myString2;
-        // std::getline(filein, myString2);
-        // LogPrintf("\nSTRING: %s", myString2);
-        // std::getline(filein, myString2);
-        // LogPrintf("\nSTRING2: %s", myString2);
-
-        //("STRING: %s", mystring);
-        // LogPrintf("\nSTRING: ");
-        // for( int i = 0 ; i < 10000; i++ ){
-		//     if(mystring[i] == '\0')
-        //         break;
-        //     LogPrintf("%c", mystring[i]);
-	    // }
-	    // LogPrintf("\n");
-
-        // do {
-        //     c = fgetc (filein);
-        //     if (c != 'z') {
-                
-        //     } else {
-        //         n++;
-        //     }
-        // } while (c != EOF);
-
-        // use file size to size memory buffer
-        // for(int i = 0; i < index; i++){
-        //     int fileSize
-
-        // }
 
         int fileSize = boost::filesystem::file_size(pathDB);
 
@@ -179,7 +134,9 @@ private:
         
         
         std::vector<unsigned char> vchSize;
+        
         try {
+            LogPrintf("Before reading:");
             filein.read((char *)&vchSize[0], 4);
             //filein >> hashIn;
             
@@ -194,8 +151,8 @@ private:
         LogPrintf("1: %c", &vchSize[1]);
         LogPrintf("1: %c", &vchSize[2]);
         LogPrintf("1: %c", &vchSize[3]);
-        auto sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
-        
+        //auto sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
+        int sizeOfData = 0;
         //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
 
         LogPrintf("Size of read data is : %d", sizeOfData);
