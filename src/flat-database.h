@@ -128,7 +128,7 @@ private:
         // read the size of the next object
         
         std::vector<unsigned char> vchSize;
-        vchData.resize(sizeof(int));
+        vchSize.resize(sizeof(int));
         
         try {
             LogPrintf("Before reading:");
