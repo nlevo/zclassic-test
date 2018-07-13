@@ -56,14 +56,13 @@ private:
         // serialize, checksum data up to that point, then append checksum
         CDataStream ssObj(SER_DISK, CLIENT_VERSION);
 
-        unsigned int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
+        int sizeOfObject = sizeof(strMagicMessage) + sizeof(FLATDATA(Params().MessageStart())) + sizeof(objToSave) + sizeof(uint256);
         ssObj << sizeOfObject;
         ssObj << strMagicMessage; // specific magic message for this type of object
         ssObj << FLATDATA(Params().MessageStart()); // network specific magic number
         ssObj << objToSave;
         uint256 hash = Hash(ssObj.begin(), ssObj.end());
         ssObj << hash;
-        
 
 
         // union device_buffer {
@@ -82,9 +81,6 @@ private:
         //         printf("c[i] = 0x%x\n", db.c[i]);
         //     }
         // }
-
-
-
 
         //int sizeOfObject = sizeof(ssObj) + sizeof(uint256);
         //ssObj << sizeOfObject;
@@ -127,19 +123,17 @@ private:
             return FileError;
         }
 
-
         int fileSize = boost::filesystem::file_size(pathDB);
 
         // read the size of the next object
         
-        
         std::vector<unsigned char> vchSize;
+        vchData.resize(sizeof(int));
         
         try {
             LogPrintf("Before reading:");
             filein.read((char *)&vchSize[0], 4);
             //filein >> hashIn;
-            
         }
         catch (std::exception &e) {
             error("%s: Deserialize or I/O error - %s", __func__, e.what());
@@ -148,9 +142,9 @@ private:
         //sizeOfData = Pointer2Int(vchSize);
         LogPrintf("Just before reinterpret_cast");
         LogPrintf("1: %c", &vchSize[0]);
-        LogPrintf("1: %c", &vchSize[1]);
-        LogPrintf("1: %c", &vchSize[2]);
-        LogPrintf("1: %c", &vchSize[3]);
+        LogPrintf("2: %c", &vchSize[1]);
+        LogPrintf("3: %c", &vchSize[2]);
+        LogPrintf("4: %c", &vchSize[3]);
         //auto sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
         int sizeOfData = 0;
         //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
@@ -185,8 +179,7 @@ private:
         {
             error("%s: Checksum mismatch, data corrupted", __func__);
             return IncorrectHash;
-        }
-
+        } 
 
         unsigned char pchMsgTmp[4];
         std::string strMagicMessageTmp;
@@ -200,7 +193,6 @@ private:
                 error("%s: Invalid magic message", __func__);
                 return IncorrectMagicMessage;
             }
-
 
             // de-serialize file header (network specific magic number) and ..
             ssObj >> FLATDATA(pchMsgTmp);
@@ -228,10 +220,8 @@ private:
             //objToLoad.CheckAndRemove();
             LogPrintf("     %s\n", objToLoad.ToString());
         }
-
         return Ok;
     }
-
 
 public:
     CFlatDB(std::string strFilenameIn, std::string strMagicMessageIn)
