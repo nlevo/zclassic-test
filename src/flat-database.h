@@ -141,27 +141,23 @@ private:
         }
         //sizeOfData = Pointer2Int(vchSize);
         LogPrintf("Just before reinterpret_cast\n");
-        LogPrintf("1: %c\n", &vchSize[0]);
-        LogPrintf("2: %c\n", &vchSize[1]);
-        LogPrintf("3: %c\n", &vchSize[2]);
-        LogPrintf("4: %c\n", &vchSize[3]);
+ 
         int sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
-        //int sizeOfData = 0;
-        //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
 
         LogPrintf("Size of read data is : %d\n", sizeOfData);
 
-        int dataSize = fileSize - sizeof(uint256);
+        //int dataSize = fileSize - sizeof(uint256);
         // Don't try to resize to a negative number if file is small
-        if (dataSize < 0)
-            dataSize = 0;
+        if (sizeOfData < 0)
+            sizeOfData = 0;
         std::vector<unsigned char> vchData;
-        vchData.resize(dataSize);
+        //vchData.resize(dataSize);
+        vchData.resize(sizeOfData - sizeof(uint256));
         uint256 hashIn;
 
         // read data and checksum from file
         try {
-            filein.read((char *)&vchData[0], dataSize);
+            filein.read((char *)&vchData[0], sizeOfData - sizeof(uint256));
             filein >> hashIn;
             
         }
@@ -170,6 +166,8 @@ private:
             return HashReadError;
         }
         filein.fclose();
+        
+
 
         CDataStream ssObj(vchData, SER_DISK, CLIENT_VERSION);
 
