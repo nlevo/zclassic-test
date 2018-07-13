@@ -176,7 +176,7 @@ private:
         int fileSize = boost::filesystem::file_size(pathDB);
 
         // read the size of the next object
-        int sizeOfData;
+        auto sizeOfData;
         
         std::vector<unsigned char> vchSize;
         try {
@@ -189,7 +189,9 @@ private:
             return HashReadError;
         }
         //sizeOfData = Pointer2Int(vchSize);
+        LogPrintf("Just before reinterpret_cast");
         sizeOfData = *reinterpret_cast<int32_t*>(vchSize.data());
+        
         //sizeOfData = (int(vchSize[0]) << 24) + (int(vchSize[1]) << 16) + (int(vchSize[2]) << 8) + vchSize[3];
 
         LogPrintf("Size of read data is : %d", sizeOfData);
