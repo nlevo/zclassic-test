@@ -105,7 +105,7 @@ private:
         // Write and commit header, data
         try {
             fileout << ssObj;
-            LogPrintf("Size of fileout: ", sizeof(fileout));
+            LogPrintf("Size of fileout: %d", sizeof(fileout));
         }
         catch (std::exception &e) {
             return error("%s: Serialize or I/O error - %s", __func__, e.what());
